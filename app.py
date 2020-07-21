@@ -97,18 +97,12 @@ def main():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_a and not started and start and end:
                     started = True
-                    # for row in grid:
-                    #     for node in row:
-                    #         node.update_neighbours(grid)
                     astar(lambda : draw(WIN, grid, ROWS, WIDTH), grid, start, end)
                     started = False
                     sim = True
 
                 if event.key == pygame.K_d and not started and start and end:
                     started = True
-                    # # for row in grid:
-                    # #     for node in row:
-                    # #         node.update_neighbours(grid)
                     dijkstra(lambda : draw(WIN, grid, ROWS, WIDTH), grid, start, end)
                     started = False
                     
