@@ -4,6 +4,7 @@ from Algorithms.nodes.nodes import *
 from Algorithms.prims import *
 from Algorithms.astar import *
 from Algorithms.dijkstra import  *
+from Algorithms.kruskal import  *
 
 WIDTH = 800
 ROWS = 50
@@ -110,6 +111,11 @@ def main():
                 if event.key == pygame.K_p and not started and not start and not end:
                     started = True
                     prims(lambda : draw(WIN, grid, ROWS, WIDTH), grid)
+                    started = False
+                
+                if event.key == pygame.K_k and not started and not start and not end:
+                    started = True
+                    kruskal(lambda : draw(WIN, grid, ROWS, WIDTH), grid)
                     started = False
 
 

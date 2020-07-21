@@ -9,7 +9,8 @@ Path Finding:
 * Dijkstra algorithm
 
 Maze:
-* Prims algorithm
+* Prim's algorithm
+* Kruskal's algorithm
 
 ---
 #### To run the application:
@@ -44,7 +45,8 @@ Keys:
 | Backspace  	|  Clear Screen 	|
 |   Mouse Right Click	|   Clear node or obstacle	|
 |   Mouse Left Click	|   Add Node or obstacle	|
-| p  	|  Draw maze using Prims(Dosen't work if start and end nodes are mentioned already) 	|
+| p  	|  Draw maze using Prim's(Dosen't work if start and end nodes are mentioned already) 	|
+|  k 	|  Draw maze using Kruskal's(Dosen't work if start and end nodes are mentioned already)	|
 | a  	|  Run A* algorithm(Works only if start and end nodes are mentioned)	|
 | d  	|  Run Dijkstra algorithm(Works only if start and end nodes are mentioned)	|
 |   	|  	|
