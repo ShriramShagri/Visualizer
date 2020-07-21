@@ -1,21 +1,31 @@
 import pygame
 import argparse
+import os
 
 from Algorithms.nodes.nodes import *
+from Algorithms.nodes.button import *
 from Algorithms.prims import *
 from Algorithms.astar import *
 from Algorithms.dijkstra import  *
 from Algorithms.kruskal import  *
+
+FILEPATH = os.getcwd()
 
 WIDTH = 800
 ROWS = 50
 GREY = (128,128,128)
 WHITE = (255,255,255)
 
+stage = randint(0,5)
+rainbow = [(255, 0, 0), (255, 255, 0), (0, 255, 0), (0, 0, 255), (75, 0, 130), (150, 0, 255)]
+col1, col2, col3 = rainbow[stage]
+count = 6
+
 MODE = 0
 
 WIN = pygame.display.set_mode((WIDTH, WIDTH))
 pygame.display.set_caption("Visualiser")
+pygame.display.set_icon(pygame.image.load(os.path.join(FILEPATH, 'Fonts', 'icon.png')))
 
 
 def make_grid(rows, width):
@@ -57,7 +67,6 @@ def main(args):
     if args.mode != 0:
         MODE = 1
     grid = make_grid(ROWS, WIDTH)
-    pygame.init()
 
     start = None
     end = None
@@ -72,9 +81,15 @@ def main(args):
         
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                run = False
+                pygame.quit()
 
             if pygame.mouse.get_pressed()[0] and not started:
+                if sim:
+                    start = None
+                    end = None
+                    grid = make_grid(ROWS, WIDTH)
+                    pygame.display.set_caption("Visualiser: Edit")
+                    sim = False
                 pos = pygame.mouse.get_pos()
                 row, col = get_clicked(pos, ROWS, WIDTH)
                 spot = grid[row][col]
@@ -104,23 +119,28 @@ def main(args):
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_a and not started and start and end:
                     started = True
+                    pygame.display.set_caption("Visualiser: A * Algorithm")
                     astar(lambda : draw(WIN, grid, ROWS, WIDTH), grid, start, end, MODE)
                     started = False
                     sim = True
 
                 if event.key == pygame.K_d and not started and start and end:
                     started = True
+                    pygame.display.set_caption("Visualiser: Dijkstra Algorithm")
                     dijkstra(lambda : draw(WIN, grid, ROWS, WIDTH), grid, start, end, MODE)
                     started = False
+                    sim = True
                     
 
                 if event.key == pygame.K_p and not started and not start and not end:
                     started = True
+                    pygame.display.set_caption("Visualiser: Prim's Algorithm")
                     prims(lambda : draw(WIN, grid, ROWS, WIDTH), grid, MODE)
                     started = False
                 
                 if event.key == pygame.K_k and not started and not start and not end:
                     started = True
+                    pygame.display.set_caption("Visualiser: Kruskal's Algorithm")
                     kruskal(lambda : draw(WIN, grid, ROWS, WIDTH), grid, MODE)
                     started = False
 
@@ -129,9 +149,11 @@ def main(args):
                     start = None
                     end = None
                     grid = make_grid(ROWS, WIDTH)
-                    pygame.display.set_caption("Visualiser")
-
-    pygame.quit()
+                    pygame.display.set_caption("Visualiser: Edit")
+                
+                if event.key == pygame.K_ESCAPE:
+                    pygame.display.set_caption("Visualiser: Main Page")
+                    run = False
 
 def parse():
     parser = argparse.ArgumentParser(
@@ -142,5 +164,329 @@ def parse():
     return parser.parse_args()
 
 
+def mainpage(args):
+    global stage, col1, col2, col3
+    Quit = False
+    pygame.init()
+    invp = False
+    invh = False
 
-main(parse())
+    background = pygame.image.load(os.path.join(FILEPATH, 'Fonts', 'background.jpg'))
+    pygame.display.set_caption("Visualiser: Main Page")
+    platbtn = button((0, 0, 0), 175, 500, 200, 100, FILEPATH, (0, 0, 0), text='Start')
+    helpbtn = button((0, 0, 0), 385, 500, 200, 100, FILEPATH, (0, 0, 0), text='Help')
+
+    while not Quit:
+        for event in pygame.event.get():
+            pos = pygame.mouse.get_pos()
+            if event.type == pygame.QUIT:
+                Quit = True
+                continue
+            
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if event.button == 1:
+                    if platbtn.isOver(pos):
+                        pygame.display.set_caption("Visualiser: Edit")
+                        main(args)
+                        invp = False
+                    if helpbtn.isOver(pos):
+                        pygame.display.set_caption("Visualiser: Help")
+                        helppage()
+                        invh = False
+                if event.button == 4:
+                    stage = (stage + 1) % 6
+                    col1, col2, col3 = rainbow[stage]
+                if event.button == 5:
+                    stage = (stage - 1) % 6
+                    col1, col2, col3 = rainbow[stage]
+
+            if event.type == pygame.MOUSEMOTION:
+                if platbtn.isOver(pos):
+                    invp = True
+                else:
+                    invp = False
+
+                if helpbtn.isOver(pos):
+                    invh = True
+                else:
+                    invh = False
+                
+        WIN.blit(background, (0, 0))
+        filltext(invp, platbtn, invh, helpbtn)
+        
+
+def filltext(inv, btn, inv2, btn2):
+    color = getcolor()
+    Maintext = pygame.font.Font(os.path.join(FILEPATH, 'Fonts', 'Milton Keynes.ttf'), 78)
+    welcome = Maintext.render("Algorithm Visualiser", True, color)
+    s = pygame.Surface((720,700))  
+    s.set_alpha(100)                
+    s.fill(invert(color))           
+    WIN.blit(s, (40,50))
+
+    s = pygame.Surface((740,720))  
+    s.set_alpha(75)                
+    s.fill(invert(color))           
+    WIN.blit(s, (30,40))
+
+    s = pygame.Surface((760,740))  
+    s.set_alpha(50)                
+    s.fill(invert(color))           
+    WIN.blit(s, (20,30))
+
+    s = pygame.Surface((780,760))  
+    s.set_alpha(25)                
+    s.fill(invert(color))           
+    WIN.blit(s, (10,20))
+
+    WIN.blit(welcome, (75,100))
+
+    if inv:
+        btn.textcolor = invert(color)
+        btn.color = color
+    else:
+        btn.textcolor = color
+        btn.color = invert(color)
+    btn.draw(WIN, btn.textcolor)
+
+    if inv2:
+        btn2.textcolor = invert(color)
+        btn2.color = color
+    else:
+        btn2.textcolor = color
+        btn2.color = invert(color)
+    btn2.draw(WIN, btn2.textcolor)
+
+    pygame.display.update()
+
+
+def invert(color):
+    a, b, c = color
+    return (abs(255 - a), abs(255 - b), abs(255 - c))
+
+def getcolor():
+    global col1, col2, col3, count, stage
+    count -= 1
+    if count == 0:
+        count = 6
+        if stage == 0:
+            if col2 < 255:
+                col2 += 1
+            if col2 == 255 :
+                stage = 1
+                col1 = 255
+                col2 = 255
+                col3 = 0
+
+        elif stage == 1:
+            if col1 > 0:
+                col1 -= 1
+            if col1 == 0:
+                col1 = 0
+                col2 = 255
+                col3 = 0
+                stage = 2
+
+        elif stage == 2:
+            if col3 < 255:
+                col3 +=1
+            if col2 > 0:
+                col2 -= 1
+            if col2 == 0 or col3 == 255:
+                stage = 3
+                col1 = 0
+                col3 = 255
+                col2 = 0
+
+        elif stage == 3:
+            if col1 < 75:
+                col1 += 0.6
+            if col3 > 130:
+                col3 -= 1
+            if col1 == 75 or col3 == 130:
+                stage = 4
+                col1 = 75
+                col3 = 130
+                col2 = 0
+
+        elif stage == 4:
+            if col3 < 255:
+                col3 += 1 
+            if col1 < 150:
+                col1 += 0.6
+            if col1 == 150 or col3 == 255:
+                stage = 5
+                col1 = 150
+                col3 = 255
+                col2 = 0
+
+        elif stage == 5:
+            if col3 > 0:
+                col3 -= 1
+            if col1 < 254:
+                col1 += 0.41
+            if col3 == 0 and col1 <= 255:
+                stage = 0
+                col1 = 255
+                col3 = 0
+                col2 = 0
+
+    return (col1, col2, col3)
+
+def helppage():
+    global stage, col1, col2, col3
+    Quit = False
+    inv = False
+    invh = False
+    page = 1
+
+    background = pygame.image.load(os.path.join(FILEPATH, 'Fonts', 'background.jpg'))
+    backbtn = button((0, 0, 0), 650, 665, 100, 75, FILEPATH, (0, 0, 0), text='Back', size= 40)
+    nextpage = button((0, 0, 0), 660, 350, 75, 100, FILEPATH, (0, 0, 0), text='>')
+    prevpage = button((0, 0, 0), 65, 350, 75, 100, FILEPATH, (0, 0, 0), text='<')
+    while not Quit:
+        for event in pygame.event.get():
+            pos = pygame.mouse.get_pos()
+            if event.type == pygame.QUIT:
+                pygame.quit()
+            
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if event.button == 1:
+                    if backbtn.isOver(pos):
+                        pygame.display.set_caption("Visualiser: Main Page")
+                        Quit = True
+                    if nextpage.isOver(pos):
+                        page = 2
+                        invh = False
+                    if prevpage.isOver(pos):
+                        page = 1
+                        invh = False
+                if event.button == 4:
+                    stage = (stage + 1) % 6
+                    col1, col2, col3 = rainbow[stage]
+                if event.button == 5:
+                    stage = (stage - 1) % 6
+                    col1, col2, col3 = rainbow[stage]
+
+            if event.type == pygame.MOUSEMOTION:
+                if backbtn.isOver(pos):
+                    inv = True
+                else:
+                    inv = False
+                if nextpage.isOver(pos) and page == 1:
+                    invh = True
+                elif prevpage.isOver(pos) and page == 2:
+                    invh = True
+                else:
+                    invh = False
+
+                
+        WIN.blit(background, (0, 0))
+        fillhelp(inv, backbtn, invh, nextpage, prevpage, page)
+    
+def fillhelp(inv, btn, inv2, btn2, btn3, page):
+    color = getcolor()
+    Maintext = pygame.font.Font(os.path.join(FILEPATH, 'Fonts', 'Milton Keynes.ttf'), 40)
+    welcome = Maintext.render("Help:", True, color)
+    helptext = pygame.font.Font(os.path.join(FILEPATH, 'Fonts', 'Milton Keynes.ttf'), 20)
+    lines = []
+    lines.append(helptext.render("Different coloured squares represents the following:", True, color))
+    lines.append(helptext.render("Color    -> Representation", True, color))
+    lines.append(helptext.render("------------------------", True, color))
+    lines.append(helptext.render("White    -> Empty Square", True, color))
+    lines.append(helptext.render("Black    -> Barrier", True, color))
+    lines.append(helptext.render("Red      -> Visited", True, color))
+    lines.append(helptext.render("Green    -> To be visited", True, color))
+    lines.append(helptext.render("Orange  -> Start Node", True, color))
+    lines.append(helptext.render("Teal      -> End Node", True, color))
+    lines.append(helptext.render("Purple   -> Shortest Path", True, color))
+    lines.append(helptext.render("", True, color))
+    lines.append(helptext.render("", True, color))
+    lines.append(helptext.render("", True, color))
+    lines.append(helptext.render("", True, color))
+    lines.append(helptext.render("", True, color))
+    lines.append(helptext.render("", True, color))
+    lines.append(helptext.render("1)Draw starting and ending nodes", True, color))
+    lines.append(helptext.render("2)Draw obstacles as you please or leave it to the pros(maze algorithms) ", True, color))
+    lines.append(helptext.render("3)Use a path finding algorithm to find shortest path", True, color))
+    line1 = []
+    line1.append(helptext.render("Keys:", True, color))
+    line1.append(helptext.render("Key                   Function", True, color))
+    line1.append(helptext.render("------------------------------", True, color))
+    line1.append(helptext.render("Mouse Scroll          -> Change Color(Initial pages only.", True, color))
+    line1.append(helptext.render("                         Doesn't work in visualiser)", True, color))
+    line1.append(helptext.render("Escape                 -> Previous page", True, color))
+    line1.append(helptext.render("Backspace             -> Clear Screen", True, color))
+    line1.append(helptext.render("Mouse Right Click    -> Clear node or obstacle", True, color))
+    line1.append(helptext.render("Mouse Left Click     -> Add Node or obstacle", True, color))
+    line1.append(helptext.render("p                      ->  Draw maze using Prim's(Dosen't work if start ", True, color))
+    line1.append(helptext.render("                           and end nodes are mentioned already)", True, color))
+    line1.append(helptext.render("k                      -> Draw maze using Kruskal's(Dosen't work if start ", True, color))
+    line1.append(helptext.render("                           and end nodes are mentioned already)", True, color))
+    line1.append(helptext.render("a                      ->  Run A* algorithm(Works only if start ", True, color))
+    line1.append(helptext.render("                           and end nodes are mentioned)", True, color))
+    line1.append(helptext.render("d                      ->  Run Dijkstra algorithm(Works only if start", True, color))
+    line1.append(helptext.render("                           and end nodes are mentioned)", True, color))
+    line1.append(helptext.render("", True, color))
+
+    s = pygame.Surface((720,700))  
+    s.set_alpha(100)                
+    s.fill(invert(color))           
+    WIN.blit(s, (40,50))
+
+    s = pygame.Surface((740,720))  
+    s.set_alpha(75)                
+    s.fill(invert(color))           
+    WIN.blit(s, (30,40))
+
+    s = pygame.Surface((760,740))  
+    s.set_alpha(50)                
+    s.fill(invert(color))           
+    WIN.blit(s, (20,30))
+
+    s = pygame.Surface((780,760))  
+    s.set_alpha(25)                
+    s.fill(invert(color))           
+    WIN.blit(s, (10,20))
+
+    WIN.blit(welcome, (75,50))
+    x = 160 
+    y = 70
+    if page == 1:
+        for li in lines:
+            y += 25
+            WIN.blit(li, (x, y))
+    elif page == 2:
+        for li in line1:
+            y += 25
+            WIN.blit(li, (x, y))
+
+    if inv:
+        btn.textcolor = invert(color)
+        btn.color = color
+    else:
+        btn.textcolor = color
+        btn.color = invert(color)
+    btn.draw(WIN, btn.textcolor)
+
+    if page == 1:
+        if inv2:
+            btn2.textcolor = invert(color)
+            btn2.color = color
+        else:
+            btn2.textcolor = color
+            btn2.color = invert(color)
+        btn2.draw(WIN, btn2.textcolor)  
+    elif page == 2:
+        if inv2:
+            btn3.textcolor = invert(color)
+            btn3.color = color
+        else:
+            btn3.textcolor = color
+            btn3.color = invert(color)
+        btn3.draw(WIN, btn3.textcolor) 
+
+    pygame.display.update()
+
+
+mainpage(parse())
