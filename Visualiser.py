@@ -135,9 +135,9 @@ def main(args):
 
 def parse():
     parser = argparse.ArgumentParser(
-        description="Starts ")
+        description="Starts Algorithm Visualiser!----> Set mode using flag to get step by step visualisation")
     parser.add_argument(
-        "-m", help="Mode: 0 for slow 1 for fast"
+        "-m", help="Mode: 0 for slow 1 for fast(no visualiation during iterations)"
         "(default is slow)", type=int, default=0, dest="mode")
     return parser.parse_args()
 
