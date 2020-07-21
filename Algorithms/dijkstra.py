@@ -12,7 +12,7 @@ def h(p, q): # L distance
     x2, y2 = q
     return abs(x1 - x2) + abs(y1 - y2)
 
-def dijkstra(draw, grid, start, end):
+def dijkstra(draw, grid, start, end, mode):
     count = 0
     openset = PriorityQueue()
     openset.put((0, count, start))
@@ -54,7 +54,8 @@ def dijkstra(draw, grid, start, end):
                     openset.put((fscore, count, neighbour))
                     opensethash.add(neighbour)
                     neighbour.make_open()
-        draw()
+        if mode == 0:
+            draw()
 
         if current != start:
             current.make_closed()

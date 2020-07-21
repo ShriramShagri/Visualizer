@@ -20,9 +20,13 @@ Install pygame
 pip install pygame
 ```
 
-Run main file:
+Run command for more information:
 ```
-python app.py
+python app.py -h
+```
+or
+```
+python app.py --help
 ```
 ---
 #### To use the tool:

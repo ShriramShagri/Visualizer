@@ -13,7 +13,7 @@ TURQUOISE = (64,224,208)
 
 
 class Nodes:
-    def __init__(self, row, col, width, total_rows):
+    def __init__(self, row, col, width, total_rows, mode):
         self.row = row
         self.col = col
         self.x = row * width
@@ -23,7 +23,7 @@ class Nodes:
         self.neighbournodes = []
         self.width = width
         self.total_rows = total_rows
-        self.ani = 4
+        self.mode = mode
 
     def get_pos(self):
         return self.row, self.col
@@ -68,6 +68,8 @@ class Nodes:
         self.colour = WHITE
 
     def draw(self, win):
+        if self.mode == 1 and (self.colour == RED or self.colour == GREEN):
+            self.colour = WHITE
         pygame.draw.rect(win, self.colour, (self.x, self.y, self.width, self.width))
     
     def invert(self):

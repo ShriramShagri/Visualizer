@@ -1,4 +1,5 @@
 import pygame
+import argparse
 
 from Algorithms.nodes.nodes import *
 from Algorithms.prims import *
@@ -11,6 +12,8 @@ ROWS = 50
 GREY = (128,128,128)
 WHITE = (255,255,255)
 
+MODE = 0
+
 WIN = pygame.display.set_mode((WIDTH, WIDTH))
 pygame.display.set_caption("Visualiser")
 
@@ -21,7 +24,7 @@ def make_grid(rows, width):
     for i in range(rows):
         grid.append([])
         for j in range(rows):
-            node = Nodes(i, j, gap, rows)
+            node = Nodes(i, j, gap, rows, MODE)
             grid[i].append(node)
     return grid
 
@@ -49,7 +52,10 @@ def get_clicked(pos, rows, width):
 
     return row, col
 
-def main():
+def main(args):
+    global MODE
+    if args.mode != 0:
+        MODE = 1
     grid = make_grid(ROWS, WIDTH)
     pygame.init()
 
@@ -98,24 +104,24 @@ def main():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_a and not started and start and end:
                     started = True
-                    astar(lambda : draw(WIN, grid, ROWS, WIDTH), grid, start, end)
+                    astar(lambda : draw(WIN, grid, ROWS, WIDTH), grid, start, end, MODE)
                     started = False
                     sim = True
 
                 if event.key == pygame.K_d and not started and start and end:
                     started = True
-                    dijkstra(lambda : draw(WIN, grid, ROWS, WIDTH), grid, start, end)
+                    dijkstra(lambda : draw(WIN, grid, ROWS, WIDTH), grid, start, end, MODE)
                     started = False
                     
 
                 if event.key == pygame.K_p and not started and not start and not end:
                     started = True
-                    prims(lambda : draw(WIN, grid, ROWS, WIDTH), grid)
+                    prims(lambda : draw(WIN, grid, ROWS, WIDTH), grid, MODE)
                     started = False
                 
                 if event.key == pygame.K_k and not started and not start and not end:
                     started = True
-                    kruskal(lambda : draw(WIN, grid, ROWS, WIDTH), grid)
+                    kruskal(lambda : draw(WIN, grid, ROWS, WIDTH), grid, MODE)
                     started = False
 
 
@@ -127,4 +133,14 @@ def main():
 
     pygame.quit()
 
-main()
+def parse():
+    parser = argparse.ArgumentParser(
+        description="Starts ")
+    parser.add_argument(
+        "-m", help="Mode: 0 for slow 1 for fast"
+        "(default is slow)", type=int, default=0, dest="mode")
+    return parser.parse_args()
+
+
+
+main(parse())

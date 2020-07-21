@@ -6,7 +6,7 @@ def findparent(v, parent):
         return v
     return findparent(parent[v], parent)
 
-def drawedge(draw, edge, grid):
+def drawedge(draw, edge, grid, mode):
     a, b = edge
     x1, y1 = a
     x2, y2 = b
@@ -26,20 +26,22 @@ def drawedge(draw, edge, grid):
     grid[x1*2][y1*2].remove_barrier()
     grid[x][y].remove_barrier()
     grid[x2*2][y2*2].remove_barrier()
+    if mode == 0:
+        draw()
 
-    draw()
-
-def kruskal(draw, grid):
+def kruskal(draw, grid, mode):
     Quit = False
 
     for row in grid:
         for node in row:
+            node.reset()
             node.invert()
-    draw()
+    if mode == 0:
+        draw()
 
     edgelist = []
-    for i in range(24):
-        for j in range(24):
+    for i in range(25):
+        for j in range(25):
             if i == 24 and j == 24:
                 continue
             elif j == 24:
@@ -69,8 +71,10 @@ def kruskal(draw, grid):
         destparent = findparent(x2*25 - (25 - y2), parent)
 
         if sourceparent != destparent:
-            drawedge(draw, current, grid)
+            drawedge(draw, current, grid, mode)
             count += 1
-            parent[sourceparent] = sourceparent
+            parent[sourceparent] = destparent
         
         i += 1
+    if mode == 1:
+        draw()

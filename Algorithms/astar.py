@@ -8,7 +8,7 @@ def reconstruct(came, end, draw):
         draw()
 
 
-def astar(draw, grid, start, end):
+def astar(draw, grid, start, end, mode):
     count = 0
     openset = PriorityQueue()
     openset.put((0, count, start))
@@ -49,7 +49,8 @@ def astar(draw, grid, start, end):
                     openset.put((fscore[neighbour], count, neighbour))
                     opensethash.add(neighbour)
                     neighbour.make_open()
-        draw()
+        if mode == 0:
+            draw()
 
         if current != start:
             current.make_closed()

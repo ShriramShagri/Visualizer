@@ -28,7 +28,7 @@ def check(n):
         return True
     return False
 
-def drawsquare(draw, grid, spot, prev):
+def drawsquare(draw, grid, spot, prev, mode):
     x1, y1 = prev
     x2, y2 = spot
     if x1 == x2:
@@ -47,14 +47,17 @@ def drawsquare(draw, grid, spot, prev):
     
     grid[x][y].remove_barrier()
     grid[x2*2][y2*2].remove_barrier()
+    if mode == 0:
+        draw()
 
-    draw()
-
-def prims(draw, grid):
+def prims(draw, grid, mode):
     for row in grid:
         for node in row:
+            node.reset()
             node.invert()
-    draw()
+    if mode == 0:
+        draw()
+        
     stack = []
     Quit = False
     x = randint(0, 24)
@@ -75,7 +78,9 @@ def prims(draw, grid):
             prev = stack[-1]
             stack.append(spot)
             visited.add(spot)
-            drawsquare(draw, grid, spot, prev)
+            drawsquare(draw, grid, spot, prev, mode)
 
         else:
             stack.pop()
+    if mode == 1:
+        draw()
