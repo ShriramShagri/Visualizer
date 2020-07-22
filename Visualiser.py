@@ -18,7 +18,7 @@ ROWS = 50
 GREY = (128,128,128)
 WHITE = (255,255,255)
 
-stage = randint(0,5)
+stage = 3
 rainbow = [(255, 0, 0), (255, 255, 0), (0, 255, 0), (0, 0, 255), (75, 0, 130), (150, 0, 255)]
 col1, col2, col3 = rainbow[stage]
 count = 6
@@ -429,6 +429,7 @@ def fillhelp(inv, btn, inv2, btn2, btn3, page):
     line1.append(helptext.render("------------------------------", True, color))
     line1.append(helptext.render("Mouse Scroll          -> Change Color(Initial pages only.", True, color))
     line1.append(helptext.render("                         Doesn't work in visualiser)", True, color))
+    line1.append(helptext.render("Tab                    -> Switch off or on grid", True, color))
     line1.append(helptext.render("Escape                 -> Previous page", True, color))
     line1.append(helptext.render("Backspace             -> Clear Screen", True, color))
     line1.append(helptext.render("Mouse Right Click    -> Clear node or obstacle", True, color))

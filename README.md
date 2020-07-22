@@ -48,6 +48,7 @@ Keys:
 |   Key	|   Function	|
 |---	|---	|
 | Backspace  	|  Clear Screen 	|
+|   Tab	|  Switch off or on grid 	|
 |   Mouse Right Click	|   Clear node or obstacle	|
 |   Mouse Left Click	|   Add Node or obstacle	|
 | p  	|  Draw maze using Prim's 	|
