@@ -1,12 +1,15 @@
 import pygame
 from random import randint, choice, shuffle
 
+store = ()
+GREEN = (0,255,0)
+
 def findparent(v, parent):
     if parent[v] == v:
         return v
     return findparent(parent[v], parent)
 
-def drawedge(draw, edge, grid, mode):
+def getcoordinate(edge):
     a, b = edge
     x1, y1 = a
     x2, y2 = b
@@ -22,6 +25,10 @@ def drawedge(draw, edge, grid, mode):
         else:
             x = x1*2 + 1
         y = y1 * 2
+    return(x1, y1, x2, y2, x, y)
+
+def drawedge(draw, edge, grid, mode):
+    x1, y1, x2, y2, x, y = getcoordinate(edge)
     
     grid[x1*2][y1*2].remove_barrier()
     grid[x][y].remove_barrier()
@@ -30,6 +37,7 @@ def drawedge(draw, edge, grid, mode):
         draw()
 
 def kruskal(draw, grid, mode):
+    pygame.init()
     Quit = False
 
     for row in grid:
@@ -57,11 +65,10 @@ def kruskal(draw, grid, mode):
 
     i = 0
     count = 0
-
     while count != 624 and not Quit:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                Quit = True
+                return False
         
         current = edgelist[i]
         x1, y1 = current[0]
@@ -78,3 +85,4 @@ def kruskal(draw, grid, mode):
         i += 1
     if mode == 1:
         draw()
+    return True

@@ -13,6 +13,7 @@ def h(p, q): # L distance
     return abs(x1 - x2) + abs(y1 - y2)
 
 def dijkstra(draw, grid, start, end, mode):
+    pygame.init()
     count = 0
     openset = PriorityQueue()
     openset.put((0, count, start))
@@ -31,7 +32,7 @@ def dijkstra(draw, grid, start, end, mode):
     while not openset.empty():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                pygame.quit()
+                False
         
         current = openset.get()[2]
         opensethash.remove(current)
@@ -60,4 +61,4 @@ def dijkstra(draw, grid, start, end, mode):
         if current != start:
             current.make_closed()
 
-    return False
+    return True

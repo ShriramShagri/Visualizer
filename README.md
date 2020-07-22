@@ -11,6 +11,7 @@ Path Finding:
 Maze:
 * Prim's algorithm
 * Kruskal's algorithm
+* Sidewinder algorithm
 
 ---
 #### To run the application:
@@ -49,8 +50,13 @@ Keys:
 | Backspace  	|  Clear Screen 	|
 |   Mouse Right Click	|   Clear node or obstacle	|
 |   Mouse Left Click	|   Add Node or obstacle	|
-| p  	|  Draw maze using Prim's(Dosen't work if start and end nodes are mentioned already) 	|
-|  k 	|  Draw maze using Kruskal's(Dosen't work if start and end nodes are mentioned already)	|
-| a  	|  Run A* algorithm(Works only if start and end nodes are mentioned)	|
-| d  	|  Run Dijkstra algorithm(Works only if start and end nodes are mentioned)	|
+| p  	|  Draw maze using Prim's 	|
+|  k 	|  Draw maze using Kruskal's	|
+|   s	|  Draw maze using Sidewinder algorithm	|
+| a  	|  Run A* algorithm	|
+| d  	|  Run Dijkstra algorithm	|
 |   	|  	|
+
+#### Note:
+1) Maze algorithms don't work if start and end nodes are mentioned already.
+2) Path finding algorithms work only if start and end nodes are mentioned.

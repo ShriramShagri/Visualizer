@@ -8,6 +8,7 @@ from Algorithms.prims import *
 from Algorithms.astar import *
 from Algorithms.dijkstra import  *
 from Algorithms.kruskal import  *
+from Algorithms.sidewinder import  *
 
 FILEPATH = os.getcwd()
 
@@ -45,7 +46,7 @@ def draw_grid(win, rows, width):
         pygame.draw.line(win, GREY, (i*gap, 0), (i*gap, width))
 
 def draw(win, grid, rows, width):
-    win.fill(WHITE)
+    # win.fill(WHITE)
     for row in grid:
         for node in row:
             node.draw(win)
@@ -67,7 +68,7 @@ def main(args):
     if args.mode != 0:
         MODE = 1
     grid = make_grid(ROWS, WIDTH)
-
+    pygame.init()
     start = None
     end = None
 
@@ -81,7 +82,7 @@ def main(args):
         
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                pygame.quit()
+                return True 
 
             if pygame.mouse.get_pressed()[0] and not started:
                 if sim:
@@ -135,13 +136,19 @@ def main(args):
                 if event.key == pygame.K_p and not started and not start and not end:
                     started = True
                     pygame.display.set_caption("Visualiser: Prim's Algorithm")
-                    prims(lambda : draw(WIN, grid, ROWS, WIDTH), grid, MODE)
+                    run = prims(lambda : draw(WIN, grid, ROWS, WIDTH), grid, MODE)
                     started = False
                 
                 if event.key == pygame.K_k and not started and not start and not end:
                     started = True
                     pygame.display.set_caption("Visualiser: Kruskal's Algorithm")
-                    kruskal(lambda : draw(WIN, grid, ROWS, WIDTH), grid, MODE)
+                    run = kruskal(lambda : draw(WIN, grid, ROWS, WIDTH), grid, MODE)
+                    started = False
+                
+                if event.key == pygame.K_s and not started and not start and not end:
+                    started = True
+                    pygame.display.set_caption("Visualiser: Sidewinder Algorithm")
+                    run = sidewinder(lambda : draw(WIN, grid, ROWS, WIDTH), grid, MODE)
                     started = False
 
 
@@ -150,10 +157,12 @@ def main(args):
                     end = None
                     grid = make_grid(ROWS, WIDTH)
                     pygame.display.set_caption("Visualiser: Edit")
+                    sim = False
                 
                 if event.key == pygame.K_ESCAPE:
                     pygame.display.set_caption("Visualiser: Main Page")
                     run = False
+    return False
 
 def parse():
     parser = argparse.ArgumentParser(
@@ -177,6 +186,8 @@ def mainpage(args):
     helpbtn = button((0, 0, 0), 385, 500, 200, 100, FILEPATH, (0, 0, 0), text='Help')
 
     while not Quit:
+        WIN.blit(background, (0, 0))
+        filltext(invp, platbtn, invh, helpbtn)
         for event in pygame.event.get():
             pos = pygame.mouse.get_pos()
             if event.type == pygame.QUIT:
@@ -187,7 +198,7 @@ def mainpage(args):
                 if event.button == 1:
                     if platbtn.isOver(pos):
                         pygame.display.set_caption("Visualiser: Edit")
-                        main(args)
+                        Quit = main(args)
                         invp = False
                     if helpbtn.isOver(pos):
                         pygame.display.set_caption("Visualiser: Help")
@@ -210,9 +221,7 @@ def mainpage(args):
                     invh = True
                 else:
                     invh = False
-                
-        WIN.blit(background, (0, 0))
-        filltext(invp, platbtn, invh, helpbtn)
+            
         
 
 def filltext(inv, btn, inv2, btn2):
@@ -220,24 +229,24 @@ def filltext(inv, btn, inv2, btn2):
     Maintext = pygame.font.Font(os.path.join(FILEPATH, 'Fonts', 'Milton Keynes.ttf'), 78)
     welcome = Maintext.render("Algorithm Visualiser", True, color)
     s = pygame.Surface((720,700))  
-    s.set_alpha(100)                
-    s.fill(invert(color))           
+    s.set_alpha(200)                
+    s.fill(WHITE)        
     WIN.blit(s, (40,50))
 
-    s = pygame.Surface((740,720))  
-    s.set_alpha(75)                
-    s.fill(invert(color))           
-    WIN.blit(s, (30,40))
+    # s = pygame.Surface((740,720))  
+    # s.set_alpha(75)                
+    # s.fill(invert(color))           
+    # WIN.blit(s, (30,40))
 
-    s = pygame.Surface((760,740))  
-    s.set_alpha(50)                
-    s.fill(invert(color))           
-    WIN.blit(s, (20,30))
+    # s = pygame.Surface((760,740))  
+    # s.set_alpha(50)                
+    # s.fill(invert(color))           
+    # WIN.blit(s, (20,30))
 
-    s = pygame.Surface((780,760))  
-    s.set_alpha(25)                
-    s.fill(invert(color))           
-    WIN.blit(s, (10,20))
+    # s = pygame.Surface((780,760))  
+    # s.set_alpha(25)                
+    # s.fill(invert(color))           
+    # WIN.blit(s, (10,20))
 
     WIN.blit(welcome, (75,100))
 
@@ -334,6 +343,7 @@ def getcolor():
     return (col1, col2, col3)
 
 def helppage():
+    pygame.init()
     global stage, col1, col2, col3
     Quit = False
     inv = False
@@ -430,24 +440,25 @@ def fillhelp(inv, btn, inv2, btn2, btn3, page):
     line1.append(helptext.render("", True, color))
 
     s = pygame.Surface((720,700))  
-    s.set_alpha(100)                
-    s.fill(invert(color))           
+    s.set_alpha(150)                
+    # s.fill(invert(color))      
+    s.fill(WHITE)            
     WIN.blit(s, (40,50))
 
-    s = pygame.Surface((740,720))  
-    s.set_alpha(75)                
-    s.fill(invert(color))           
-    WIN.blit(s, (30,40))
+    # s = pygame.Surface((740,720))  
+    # s.set_alpha(75)                
+    # s.fill(invert(color))           
+    # WIN.blit(s, (30,40))
 
-    s = pygame.Surface((760,740))  
-    s.set_alpha(50)                
-    s.fill(invert(color))           
-    WIN.blit(s, (20,30))
+    # s = pygame.Surface((760,740))  
+    # s.set_alpha(50)                
+    # s.fill(invert(color))           
+    # WIN.blit(s, (20,30))
 
-    s = pygame.Surface((780,760))  
-    s.set_alpha(25)                
-    s.fill(invert(color))           
-    WIN.blit(s, (10,20))
+    # s = pygame.Surface((780,760))  
+    # s.set_alpha(25)                
+    # s.fill(invert(color))           
+    # WIN.blit(s, (10,20))
 
     WIN.blit(welcome, (75,50))
     x = 160 

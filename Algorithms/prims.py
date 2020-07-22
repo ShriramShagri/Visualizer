@@ -1,6 +1,8 @@
 import pygame
 from random import randint, choice
 
+store = ()
+
 def update(node, visited):
     n = []
     x, y = node
@@ -44,13 +46,25 @@ def drawsquare(draw, grid, spot, prev, mode):
             x = x1*2 + 1
         y = y1 * 2
     
-    
     grid[x][y].remove_barrier()
     grid[x2*2][y2*2].remove_barrier()
     if mode == 0:
         draw()
 
+def drawnode(draw, grid, node, mode):
+    global store
+    a, b = node
+    if store != node:
+        c, d = store
+        grid[c*2][d*2].remove_barrier()
+        store = node
+    if mode == 0:
+        grid[a*2][b*2].make_open()
+        draw()
+
 def prims(draw, grid, mode):
+    global store
+    pygame.init()
     for row in grid:
         for node in row:
             node.reset()
@@ -65,13 +79,16 @@ def prims(draw, grid, mode):
     stack.append((x, y)) 
     visited = {(x, y)}
     grid[x*2][y*2].remove_barrier()
-    draw()
+    store = stack[-1]
+    if mode == 0:
+        draw()
 
     while len(visited) < 25*25 and not Quit:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                Quit = True
+                return False
         n = update(stack[-1], visited)
+        drawnode(draw, grid, stack[-1], mode)
 
         if check(n):
             spot = choice(n)
@@ -82,5 +99,9 @@ def prims(draw, grid, mode):
 
         else:
             stack.pop()
+    c, d = store
+    grid[c*2][d*2].remove_barrier() 
+
     if mode == 1:
         draw()
+    return True
