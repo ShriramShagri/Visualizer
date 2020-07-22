@@ -78,6 +78,10 @@ class Nodes:
         
     def leader(self):
         self.colour = GREEN
+    
+    def tracker(self):
+        self.colour = RED
+        self.animator = 1
 
     def draw(self, win):
         if self.mode == 1 and (self.colour == RED or self.colour == GREEN):

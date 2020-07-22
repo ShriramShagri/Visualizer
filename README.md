@@ -51,9 +51,11 @@ Keys:
 |   Tab	|  Switch off or on grid 	|
 |   Mouse Right Click	|   Clear node or obstacle	|
 |   Mouse Left Click	|   Add Node or obstacle	|
-| p  	|  Draw maze using Prim's 	|
-|  k 	|  Draw maze using Kruskal's	|
+| p  	|  Draw maze using Prim's algorithm	|
+|  k 	|  Draw maze using Kruskal's algorithm	|
 |   s	|  Draw maze using Sidewinder algorithm	|
+|  b 	|  Draw maze using Recursive backtracking algorithm	|
+|  e 	|  	Draw maze using Eller's algorithm|
 | a  	|  Run A* algorithm	|
 | d  	|  Run Dijkstra algorithm	|
 |   	|  	|

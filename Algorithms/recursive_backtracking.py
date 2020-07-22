@@ -2,6 +2,7 @@ import pygame
 from random import randint, choice
 
 store = ()
+clk = pygame.time.Clock()
 
 def update(node, visited):
     n = []
@@ -58,6 +59,7 @@ def drawsquare(draw, grid, spot, prev, mode, color = ''):
 def backtrack(draw, grid, mode):
     global store
     pygame.init()
+    run = True
     for row in grid:
         for node in row:
             node.reset()
@@ -70,31 +72,41 @@ def backtrack(draw, grid, mode):
     y = randint(0, 24)
     stack.append((x, y)) 
     visited = {(x, y)}
-    grid[x*2][y*2].remove_barrier()
+    # grid[x*2][y*2].remove_barrier()
     store = stack[-1]
     if mode == 0:
         draw()
 
-    while stack:
+    while stack and run:
+        clk.tick(20)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return False
-        n = update(stack[-1], visited)
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    run = False
+                    for row in grid:
+                        for node in row:
+                            if node.is_closed():
+                                node.reset()
+                    break
+        if run:
+            n = update(stack[-1], visited)
 
-        if check(n):
-            spot = choice(n)
-            prev = stack[-1]
-            stack.append(spot)
-            visited.add(spot)
-            drawsquare(draw, grid, spot, prev, mode, color='Red')
-
-        else:
-            a = stack.pop()
-            if stack:
+            if check(n):
+                spot = choice(n)
                 prev = stack[-1]
-                drawsquare(draw, grid, a, prev, mode)
-    c, d = store
-    grid[c*2][d*2].remove_barrier() 
+                stack.append(spot)
+                visited.add(spot)
+                drawsquare(draw, grid, spot, prev, mode, color='Red')
+
+            else:
+                a = stack.pop()
+                if stack:
+                    prev = stack[-1]
+                    drawsquare(draw, grid, a, prev, mode)
+        c, d = store
+        grid[c*2][d*2].remove_barrier() 
 
     if mode == 1:
         draw()

@@ -11,6 +11,7 @@ from Algorithms.dijkstra import dijkstra
 from Algorithms.kruskal import kruskal
 from Algorithms.sidewinder import sidewinder
 from Algorithms.recursive_backtracking import backtrack
+from Algorithms.ellers import ellers
 
 FILEPATH = os.getcwd()
 
@@ -151,6 +152,18 @@ def main(args):
                     started = True
                     pygame.display.set_caption("Visualiser: Sidewinder Algorithm")
                     run = sidewinder(lambda : draw(WIN, grid, ROWS, WIDTH, togglegrid), grid, MODE)
+                    started = False
+                
+                if event.key == pygame.K_p and not started and not start and not end:
+                    started = True
+                    pygame.display.set_caption("Visualiser: Prims's Algorithm")
+                    run = prims(lambda : draw(WIN, grid, ROWS, WIDTH, togglegrid), grid, MODE)
+                    started = False
+                
+                if event.key == pygame.K_e and not started and not start and not end:
+                    started = True
+                    pygame.display.set_caption("Visualiser: Ellers's Algorithm")
+                    run = ellers(lambda : draw(WIN, grid, ROWS, WIDTH, togglegrid), grid, MODE)
                     started = False
 
 
