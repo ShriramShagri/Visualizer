@@ -59,7 +59,7 @@ def drawnode(draw, grid, node, mode):
         grid[c*2][d*2].remove_barrier()
         store = node
     if mode == 0:
-        grid[a*2][b*2].make_open()
+        grid[a*2][b*2].leader()
         draw()
 
 def prims(draw, grid, mode):

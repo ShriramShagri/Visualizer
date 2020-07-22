@@ -46,13 +46,12 @@ def draw_grid(win, rows, width):
         pygame.draw.line(win, GREY, (0, i*gap), (width, i*gap))
         pygame.draw.line(win, GREY, (i*gap, 0), (i*gap, width))
 
-def draw(win, grid, rows, width):
-    # win.fill(WHITE)
+def draw(win, grid, rows, width,t):
     for row in grid:
         for node in row:
             node.draw(win)
-
-    draw_grid(win, rows, width)
+    if t:
+        draw_grid(win, rows, width)
     pygame.display.update()
 
 def get_clicked(pos, rows, width):
@@ -72,6 +71,7 @@ def main(args):
     pygame.init()
     start = None
     end = None
+    togglegrid = True
 
     run = True
     started = False
@@ -79,7 +79,7 @@ def main(args):
 
     while run:
         if not started:
-            draw(WIN, grid, ROWS, WIDTH)
+            draw(WIN, grid, ROWS, WIDTH, togglegrid)
         
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -122,14 +122,14 @@ def main(args):
                 if event.key == pygame.K_a and not started and start and end:
                     started = True
                     pygame.display.set_caption("Visualiser: A * Algorithm")
-                    astar(lambda : draw(WIN, grid, ROWS, WIDTH), grid, start, end, MODE)
+                    astar(lambda : draw(WIN, grid, ROWS, WIDTH, togglegrid), grid, start, end, MODE)
                     started = False
                     sim = True
 
                 if event.key == pygame.K_d and not started and start and end:
                     started = True
                     pygame.display.set_caption("Visualiser: Dijkstra Algorithm")
-                    dijkstra(lambda : draw(WIN, grid, ROWS, WIDTH), grid, start, end, MODE)
+                    dijkstra(lambda : draw(WIN, grid, ROWS, WIDTH, togglegrid), grid, start, end, MODE)
                     started = False
                     sim = True
                     
@@ -137,19 +137,19 @@ def main(args):
                 if event.key == pygame.K_p and not started and not start and not end:
                     started = True
                     pygame.display.set_caption("Visualiser: Prim's Algorithm")
-                    run = prims(lambda : draw(WIN, grid, ROWS, WIDTH), grid, MODE)
+                    run = prims(lambda : draw(WIN, grid, ROWS, WIDTH, togglegrid), grid, MODE)
                     started = False
                 
                 if event.key == pygame.K_k and not started and not start and not end:
                     started = True
                     pygame.display.set_caption("Visualiser: Kruskal's Algorithm")
-                    run = kruskal(lambda : draw(WIN, grid, ROWS, WIDTH), grid, MODE)
+                    run = kruskal(lambda : draw(WIN, grid, ROWS, WIDTH, togglegrid), grid, MODE)
                     started = False
                 
                 if event.key == pygame.K_s and not started and not start and not end:
                     started = True
                     pygame.display.set_caption("Visualiser: Sidewinder Algorithm")
-                    run = sidewinder(lambda : draw(WIN, grid, ROWS, WIDTH), grid, MODE)
+                    run = sidewinder(lambda : draw(WIN, grid, ROWS, WIDTH, togglegrid), grid, MODE)
                     started = False
 
 
@@ -162,8 +162,10 @@ def main(args):
                 
                 if event.key == pygame.K_ESCAPE:
                     pygame.display.set_caption("Visualiser: Main Page")
-                    run = False
-    return False
+                    return False
+                if event.key == pygame.K_TAB:
+                    togglegrid = not togglegrid
+    return True
 
 def parse():
     parser = argparse.ArgumentParser(

@@ -24,6 +24,7 @@ class Nodes:
         self.width = width
         self.total_rows = total_rows
         self.mode = mode
+        self.animator = 1
 
     def get_pos(self):
         return self.row, self.col
@@ -45,32 +46,49 @@ class Nodes:
 
     def reset(self):
         self.colour = WHITE
+        self.animator = 7
 
     def make_closed(self):
         self.colour = RED
+        self.animator = 7
 
     def make_open(self):
         self.colour = GREEN
+        self.animator = 7
 
     def make_barrier(self):
         self.colour = BLACK
+        self.animator = 7
 
     def make_start(self):
         self.colour = ORANGE
+        self.animator = 7
 
     def make_end(self):
         self.colour = TURQUOISE
+        self.animator = 7
 
     def make_path(self):
         self.colour = PURPLE
+        self.animator = 7
     
     def remove_barrier(self):
         self.colour = WHITE
+        self.animator = 7
+        
+    def leader(self):
+        self.colour = GREEN
 
     def draw(self, win):
         if self.mode == 1 and (self.colour == RED or self.colour == GREEN):
             self.colour = WHITE
-        pygame.draw.rect(win, self.colour, (self.x, self.y, self.width, self.width))
+        if self.animator == 7 and self.colour != WHITE:
+            pygame.draw.rect(win, WHITE, (self.x, self.y, self.width, self.width))
+        gap = self.width / self.animator
+        pos = (self.width - gap) / 2
+        pygame.draw.rect(win, self.colour, (self.x + pos, self.y + pos, gap, gap))
+        if self.animator > 1:
+            self.animator -= 1
     
     def invert(self):
         if self.colour == BLACK:
