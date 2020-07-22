@@ -1,6 +1,7 @@
 import pygame
 import argparse
 import os
+import sys
 
 from Algorithms.nodes.nodes import *
 from Algorithms.nodes.button import *
@@ -233,20 +234,20 @@ def filltext(inv, btn, inv2, btn2):
     s.fill(WHITE)        
     WIN.blit(s, (40,50))
 
-    # s = pygame.Surface((740,720))  
-    # s.set_alpha(75)                
-    # s.fill(invert(color))           
-    # WIN.blit(s, (30,40))
+    s = pygame.Surface((740,720))  
+    s.set_alpha(10)                
+    s.fill(invert(color))           
+    WIN.blit(s, (30,40))
 
-    # s = pygame.Surface((760,740))  
-    # s.set_alpha(50)                
-    # s.fill(invert(color))           
-    # WIN.blit(s, (20,30))
+    s = pygame.Surface((760,740))  
+    s.set_alpha(5)                
+    s.fill(invert(color))           
+    WIN.blit(s, (20,30))
 
-    # s = pygame.Surface((780,760))  
-    # s.set_alpha(25)                
-    # s.fill(invert(color))           
-    # WIN.blit(s, (10,20))
+    s = pygame.Surface((780,760))  
+    s.set_alpha(2)                
+    s.fill(invert(color))           
+    WIN.blit(s, (10,20))
 
     WIN.blit(welcome, (75,100))
 
@@ -359,6 +360,7 @@ def helppage():
             pos = pygame.mouse.get_pos()
             if event.type == pygame.QUIT:
                 pygame.quit()
+                sys.exit()
             
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if event.button == 1:
@@ -429,36 +431,38 @@ def fillhelp(inv, btn, inv2, btn2, btn3, page):
     line1.append(helptext.render("Backspace             -> Clear Screen", True, color))
     line1.append(helptext.render("Mouse Right Click    -> Clear node or obstacle", True, color))
     line1.append(helptext.render("Mouse Left Click     -> Add Node or obstacle", True, color))
-    line1.append(helptext.render("p                      ->  Draw maze using Prim's(Dosen't work if start ", True, color))
-    line1.append(helptext.render("                           and end nodes are mentioned already)", True, color))
-    line1.append(helptext.render("k                      -> Draw maze using Kruskal's(Dosen't work if start ", True, color))
-    line1.append(helptext.render("                           and end nodes are mentioned already)", True, color))
-    line1.append(helptext.render("a                      ->  Run A* algorithm(Works only if start ", True, color))
-    line1.append(helptext.render("                           and end nodes are mentioned)", True, color))
-    line1.append(helptext.render("d                      ->  Run Dijkstra algorithm(Works only if start", True, color))
-    line1.append(helptext.render("                           and end nodes are mentioned)", True, color))
+    line1.append(helptext.render("p                      ->  Draw maze using Prim'salgorithm", True, color))
+    line1.append(helptext.render("k                      -> Draw maze using Kruskal's algorithm", True, color))
+    line1.append(helptext.render("s                      -> Draw maze using Sidewinder algorithm", True, color))
+    line1.append(helptext.render("a                      ->  Run A* algorithm", True, color))
+    line1.append(helptext.render("d                      ->  Run Dijkstra algorithm", True, color))
     line1.append(helptext.render("", True, color))
-
+    line2 = []
+    line2.append(helptext.render("", True, color))
+    line2.append(helptext.render("", True, color))
+    line2.append(helptext.render("Note:", True, color))
+    line2.append(helptext.render("1) Maze algorithms don't work if start and end nodes are mentioned already.", True, color))
+    line2.append(helptext.render("2) Path finding algorithms work only if start and end nodes are mentioned.", True, color))
     s = pygame.Surface((720,700))  
     s.set_alpha(150)                
-    # s.fill(invert(color))      
+    # s.fill(insvert(color))      
     s.fill(WHITE)            
     WIN.blit(s, (40,50))
 
-    # s = pygame.Surface((740,720))  
-    # s.set_alpha(75)                
-    # s.fill(invert(color))           
-    # WIN.blit(s, (30,40))
+    s = pygame.Surface((740,720))  
+    s.set_alpha(10)                
+    s.fill(invert(color))           
+    WIN.blit(s, (30,40))
 
-    # s = pygame.Surface((760,740))  
-    # s.set_alpha(50)                
-    # s.fill(invert(color))           
-    # WIN.blit(s, (20,30))
+    s = pygame.Surface((760,740))  
+    s.set_alpha(5)                
+    s.fill(invert(color))           
+    WIN.blit(s, (20,30))
 
-    # s = pygame.Surface((780,760))  
-    # s.set_alpha(25)                
-    # s.fill(invert(color))           
-    # WIN.blit(s, (10,20))
+    s = pygame.Surface((780,760))  
+    s.set_alpha(2)                
+    s.fill(invert(color))           
+    WIN.blit(s, (10,20))
 
     WIN.blit(welcome, (75,50))
     x = 160 
@@ -469,6 +473,10 @@ def fillhelp(inv, btn, inv2, btn2, btn3, page):
             WIN.blit(li, (x, y))
     elif page == 2:
         for li in line1:
+            y += 25
+            WIN.blit(li, (x, y))
+        x = 75
+        for li in line2:
             y += 25
             WIN.blit(li, (x, y))
 
