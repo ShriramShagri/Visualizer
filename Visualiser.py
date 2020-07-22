@@ -5,11 +5,12 @@ import sys
 
 from Algorithms.nodes.nodes import *
 from Algorithms.nodes.button import *
-from Algorithms.prims import *
-from Algorithms.astar import *
-from Algorithms.dijkstra import  *
-from Algorithms.kruskal import  *
-from Algorithms.sidewinder import  *
+from Algorithms.prims import prims
+from Algorithms.astar import astar
+from Algorithms.dijkstra import dijkstra
+from Algorithms.kruskal import kruskal
+from Algorithms.sidewinder import sidewinder
+from Algorithms.recursive_backtracking import backtrack
 
 FILEPATH = os.getcwd()
 
@@ -134,10 +135,10 @@ def main(args):
                     sim = True
                     
 
-                if event.key == pygame.K_p and not started and not start and not end:
+                if event.key == pygame.K_b and not started and not start and not end:
                     started = True
-                    pygame.display.set_caption("Visualiser: Prim's Algorithm")
-                    run = prims(lambda : draw(WIN, grid, ROWS, WIDTH, togglegrid), grid, MODE)
+                    pygame.display.set_caption("Visualiser: Recursive backtracking Algorithm")
+                    run = backtrack(lambda : draw(WIN, grid, ROWS, WIDTH, togglegrid), grid, MODE)
                     started = False
                 
                 if event.key == pygame.K_k and not started and not start and not end:
