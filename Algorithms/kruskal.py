@@ -67,7 +67,7 @@ def kruskal(draw, grid, mode):
     i = 0
     count = 0
     while count != 624 and not Quit:
-        clk.tick(45)
+        # clk.tick(45)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return False

@@ -1,25 +1,59 @@
 import pygame
-from random import choice, shuffle
+from random import choice, shuffle, randint
 
 def getneighbour(node, visited):
+    x, y = node
     neighbours = []
-    a, b = node
-    if a + 1 != len(grid)//2:
-        neighbours.append((a+1, b))
-    if b + 1 != len(grid)//2:
-        neighbours.append((a, b+1))
-    if a != 0 :
-        neighbours.append((a-1, b))
-    if b != 0 :
-        neighbours.append((a, b-1))
-    
-    for spot in neighbours:
-        x, y = spot
-        if visited[x * len(grid)//2 + y]:
-            neighbours.remove(spot)
+    popy = []
+    if x < 24:
+        if (x+1, y) in visited:
+            popy.append((x+1, y))
         else:
-           visited[x * len(grid)//2 + y] = True
-    return neighbours, visited 
+            neighbours.append((x+1, y))
+    if x > 0:
+        if (x-1, y) in visited:
+            popy.append((x-1, y))
+        else:
+            neighbours.append((x-1, y))
+    if y < 24:
+        if (x, y+1) in visited:
+            popy.append((x, y+1))
+        else:
+            neighbours.append((x, y+1))
+    if y > 0:
+        if (x, y-1) in visited:
+            popy.append((x, y-1))
+        else:
+            neighbours.append((x, y-1))
+
+    return neighbours, popy
+
+def drawedge(draw, edge, grid, mode):
+    x1, y1, x2, y2, x, y = getcoordinate(edge)
+    
+    grid[x1*2][y1*2].remove_barrier()
+    grid[x][y].remove_barrier()
+    grid[x2*2][y2*2].remove_barrier()
+    if mode == 0:
+        draw()
+
+def getcoordinate(edge):
+    a, b = edge
+    x1, y1 = a
+    x2, y2 = b
+    if x1 == x2:
+        if y1 > y2:
+            y = y1*2 - 1
+        else:
+            y = y1*2 + 1
+        x = x1 * 2
+    elif  y1 == y2:
+        if x1 > x2:
+            x = x1*2 - 1
+        else:
+            x = x1*2 + 1
+        y = y1 * 2
+    return(x1, y1, x2, y2, x, y)
     
 
 def prims(draw, grid, mode):
@@ -30,28 +64,35 @@ def prims(draw, grid, mode):
     if mode == 0:
         draw()
 
-    nodelist = [(i, j) for i in range(len(grid)//2) for j in range(len(grid)//2)]
-    visited = [False for i in range(len(nodelist))]
+    x = randint(0, len(grid)//2-1)
+    y = randint(0, len(grid)//2-1)
+    start = (x, y)
+    visited = {start}
+    tovisit, p = getneighbour(start, visited)
+    tovisit = set(tovisit)
+    count = 1
 
-    start = choice(nodelist)
-    x,y = start
-    g = [start]
-    visited[ x * len(grid)//2 + y] = True
-
-    count = 0
-
-    while count != (len(grid)//2)**2 - 1:
+    while count < (len(grid)//2)**2-1:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return False
         
-        node = choice(g)
-        n, visited = getneighbour(node, visited)
-        g.remove(node)
-        g.extend(n)
-        shuffle(g)
-
+        p = []
+        n = []
+        nextnode = choice(list(tovisit))
+        n , p = getneighbour(nextnode, visited)
+        tovisit.remove(nextnode)
+        visited.add(nextnode)
+        count += 1
+        
+        for nodes in n:
+            if nodes != None:
+                tovisit.add(nodes)
+        
+        drawedge(draw, (choice(p), nextnode), grid, mode)
+            
+        
     if mode == 1:
         draw()
-        
+
     return True

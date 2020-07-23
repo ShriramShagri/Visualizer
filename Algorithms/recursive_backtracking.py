@@ -78,7 +78,7 @@ def backtrack(draw, grid, mode):
         draw()
 
     while stack and run:
-        clk.tick(20)
+        # clk.tick(20)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return False

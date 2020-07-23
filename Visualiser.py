@@ -179,6 +179,7 @@ def main(args):
                     return False
                 if event.key == pygame.K_TAB:
                     togglegrid = not togglegrid
+        pygame.display.set_caption("Visualiser: Edit")
     return True
 
 def parse():
@@ -525,4 +526,4 @@ def fillhelp(inv, btn, inv2, btn2, btn3, page):
     pygame.display.update()
 
 
-mainpage(parse())
+main(parse())
