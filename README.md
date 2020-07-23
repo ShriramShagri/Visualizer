@@ -12,6 +12,8 @@ Maze:
 * Prim's algorithm
 * Kruskal's algorithm
 * Sidewinder algorithm
+* Recursive backtracking algorithm
+* Aldous Broder algorithm
 
 ---
 #### To run the application:
@@ -56,6 +58,7 @@ Keys:
 |  k 	|  Draw maze using Kruskal's algorithm	|
 |   s	|  Draw maze using Sidewinder algorithm	|
 |  b 	|  Draw maze using Recursive backtracking algorithm	|
+|  u 	|  Draw maze using Aldous Broder algorithm	|
 |  e 	|  	Draw maze using Eller's algorithm|
 | a  	|  Run A* algorithm	|
 | d  	|  Run Dijkstra algorithm	|
