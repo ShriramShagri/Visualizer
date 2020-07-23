@@ -12,6 +12,7 @@ from Algorithms.kruskal import kruskal
 from Algorithms.sidewinder import sidewinder
 from Algorithms.recursive_backtracking import backtrack
 from Algorithms.ellers import ellers
+from Algorithms.aldous_broder import aldous
 
 FILEPATH = os.getcwd()
 
@@ -164,6 +165,12 @@ def main(args):
                     started = True
                     pygame.display.set_caption("Visualiser: Ellers's Algorithm")
                     run = ellers(lambda : draw(WIN, grid, ROWS, WIDTH, togglegrid), grid, MODE)
+                    started = False
+                
+                if event.key == pygame.K_u and not started and not start and not end:
+                    started = True
+                    pygame.display.set_caption("Visualiser: Aldous Broder Algorithm")
+                    run = aldous(lambda : draw(WIN, grid, ROWS, WIDTH, togglegrid), grid, MODE)
                     started = False
 
 

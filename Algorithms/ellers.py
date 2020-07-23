@@ -9,6 +9,11 @@ def ellers(draw, grid, mode):
         for node in row:
             node.reset()
             node.invert()
+    for row in range(len(grid)):
+        for node in range(len(grid[row])):
+            if row % 2 == 1 and node % 2 ==1:
+                grid[row][node].remove_barrier()
+            
     if mode == 0:
         draw()
     i = 0
@@ -23,12 +28,6 @@ def ellers(draw, grid, mode):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return False
-        for s in sets.keys():
-            if randint(0,1) == 0:
-                if int(s)+1 in sets.keys():
-                    sets[s].extend(sets[str(int(s)+1)])
-                    remove.append(s)
-
 
         
         
