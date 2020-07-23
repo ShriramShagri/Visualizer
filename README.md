@@ -19,6 +19,7 @@ Maze:
 Install pygame
 ```bash
 pip install pygame
+pip install argparse
 ```
 
 Run command for more information:
