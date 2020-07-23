@@ -452,6 +452,7 @@ def fillhelp(inv, btn, inv2, btn2, btn3, page):
     line1.append(helptext.render("p                      ->  Draw maze using Prim'salgorithm", True, color))
     line1.append(helptext.render("k                      -> Draw maze using Kruskal's algorithm", True, color))
     line1.append(helptext.render("s                      -> Draw maze using Sidewinder algorithm", True, color))
+    line1.append(helptext.render("b                      -> Draw maze using Recursive backtracking algorithm", True, color))
     line1.append(helptext.render("a                      ->  Run A* algorithm", True, color))
     line1.append(helptext.render("d                      ->  Run Dijkstra algorithm", True, color))
     line1.append(helptext.render("", True, color))
@@ -526,4 +527,4 @@ def fillhelp(inv, btn, inv2, btn2, btn3, page):
     pygame.display.update()
 
 
-main(parse())
+mainpage(parse())
