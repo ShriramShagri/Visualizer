@@ -17,10 +17,6 @@ def ellers(draw, grid, mode):
     if mode == 0:
         draw()
     i = 0
-    
-    nodes = [(i, j) for j in range(len(grid[i])//2)]
-    sets = {f'{count}': [nodes[count]] for count in range(len(nodes))}
-    remove = []
 
     while i < len(grid)//2 - 1:
         clk.tick(30)
@@ -28,9 +24,6 @@ def ellers(draw, grid, mode):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return False
-
-        
-        
     if mode == 1:
         draw()
         

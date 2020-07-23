@@ -13,6 +13,7 @@ from Algorithms.sidewinder import sidewinder
 from Algorithms.recursive_backtracking import backtrack
 from Algorithms.ellers import ellers
 from Algorithms.aldous_broder import aldous
+from Algorithms.wilson import wilson
 
 FILEPATH = os.getcwd()
 
@@ -169,8 +170,14 @@ def main(args):
                 
                 if event.key == pygame.K_u and not started and not start and not end:
                     started = True
-                    pygame.display.set_caption("Visualiser: Aldous Broder Algorithm")
+                    pygame.display.set_caption("Visualiser: Aldous Broder Algorithm(VERY SLOW!!!)")
                     run = aldous(lambda : draw(WIN, grid, ROWS, WIDTH, togglegrid), grid, MODE)
+                    started = False
+                
+                if event.key == pygame.K_w and not started and not start and not end:
+                    started = True
+                    pygame.display.set_caption("Visualiser: Wilson's Algorithm")
+                    run = wilson(lambda : draw(WIN, grid, ROWS, WIDTH, togglegrid), grid, MODE)
                     started = False
 
 
