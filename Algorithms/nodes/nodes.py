@@ -30,6 +30,7 @@ class Nodes:
         self.total_cols = total_cols
         self.mode = mode
         self.animator = 1
+        self.prevcolour = None
 
     def get_pos(self):
         return self.row, self.col
@@ -98,6 +99,18 @@ class Nodes:
     def wil2(self):
         self.colour = LIGHTRED2
         self.animator = 1
+    
+    def open_prev(self):
+        self.prevcolour = self.colour
+        self.colour = LIGHTGREEN
+    
+    def if_open_prev(self):
+        return self.colour == LIGHTGREEN
+
+    def do_open_prev(self):
+        if self.prevcolour:
+            self.colour = self.prevcolour
+            self.prevcolour = None
 
     def getwil1(self):
         return self.colour == LIGHTGREEN2
@@ -120,6 +133,9 @@ class Nodes:
             pygame.draw.rect(win, self.colour, (self.x + pos, self.y + pos, gap, gap))
         if self.animator > 1:
             self.animator -= 1
+        if self.prevcolour:
+            self.colour = self.prevcolour
+            self.prevcolour = None
     
     def invert(self):
         if self.colour == BLACK:

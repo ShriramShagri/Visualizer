@@ -3,7 +3,7 @@ from random import randint, choice, shuffle
 
 row = 24
 col = 49
-# clk = pygame.time.Clock()
+clk = pygame.time.Clock()
 
 def update(node, visited):
     n = []
@@ -51,6 +51,34 @@ def neighbours(visited):
                 fresh.remove(nodes)
         n.extend(fresh)
     return n
+
+def drawedge(draw, grid, node, visited, mode):
+    x, y = node
+    neigh = [(x+1, y), (x-1, y), (x, y+1), (x, y-1)]
+    shuffle(neigh)
+    for spot in neigh:
+        if spot in visited:
+            break
+    drawsquare(draw, grid, spot, node, mode)
+    
+
+def gohunt(draw, grid, n, i, visited, mode):
+    drawrow(draw, grid, i, mode)
+    for j in range(col+1):
+        if (i, j) in n:
+            return (i, j)
+    return None
+
+def drawrow(draw, grid, row, mode):
+    for rw in grid:
+        for node in rw:
+            if node.if_open_prev():
+                node.do_open_prev()
+    for nodes in grid[row]:
+        nodes.open_prev()
+    
+    if mode == 0:
+        draw()
 
 
 def drawsquare(draw, grid, spot, prev, mode):
@@ -121,42 +149,20 @@ def hunt(draw, grid, mode):
         else:
             stack = []
             n = neighbours(visited)
-            new = gohunt(draw, grid, n, visited, mode)
-            if new == None:
-                break
-            stack.append(new)
-            visited.add(new)
-            drawedge(draw, grid, new, visited, mode)
+            i = 0
+            while True:
+                new = gohunt(draw, grid, n, i, visited, mode)
+                i += 1
+                if new != None:
+                    break
+                if new == None and i == row + 1:
+                    run = False
+                    break
+            if run:
+                stack.append(new)
+                visited.add(new)
+                drawedge(draw, grid, new, visited, mode)
     if mode == 1:
         draw()
         
     return True
-
-def drawedge(draw, grid, node, visited, mode):
-    x, y = node
-    neigh = [(x+1, y), (x-1, y), (x, y+1), (x, y-1)]
-    shuffle(neigh)
-    for spot in neigh:
-        if spot in visited:
-            break
-    drawsquare(draw, grid, spot, node, mode)
-    
-
-def gohunt(draw, grid, n, visited, mode):
-    for i in range(row+1):
-        # drawrow(draw, grid, i, mode)
-        for j in range(col+1):
-            if (i, j) in n:
-                return (i, j)
-    return None
-
-def drawrow(draw, grid, row, mode):
-    for rw in grid:
-        for node in rw:
-            if node.is_open():
-                node.barrier()
-    for nodes in grid[row]:
-        nodes.leader()
-    
-    if mode == 0:
-        draw()
