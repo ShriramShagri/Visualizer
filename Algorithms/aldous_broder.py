@@ -14,6 +14,19 @@ def drawedge(draw, edge, grid, mode):
     grid[x1*2][y1*2].remove_barrier()
     grid[x][y].remove_barrier()
     grid[x2*2][y2*2].remove_barrier()
+    
+
+    if mode == 0:
+        draw()
+
+def flash(draw, node, grid, mode):
+    x1, y1 = node
+    for rw in grid:
+        for node in rw:
+            if node.getwil1():
+                node.reset()
+    
+    grid[x1*2][y1*2].wil1()
     if mode == 0:
         draw()
 
@@ -120,6 +133,11 @@ def aldous(draw, grid, mode):
                 n = getrandom(prev, visited)
             nextnode = n[-1]
             count = 0
+
+        temp = grid
+        flash(draw, nextnode, grid, mode)
+        grid = temp
+
         if nextnode in visited:
             count += 1
             if mode == 0:
@@ -128,7 +146,6 @@ def aldous(draw, grid, mode):
             visited.append(nextnode)
             drawedge(draw, (prev, nextnode), grid, mode)
             prev = nextnode
-    print(len(visited))
         
     if mode == 1:
         draw()

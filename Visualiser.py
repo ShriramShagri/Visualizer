@@ -14,6 +14,7 @@ from Algorithms.recursive_backtracking import backtrack
 from Algorithms.ellers import ellers
 from Algorithms.aldous_broder import aldous
 from Algorithms.wilson import wilson
+from Algorithms.hunt_and_kill import hunt
 
 FILEPATH = os.getcwd()
 
@@ -185,6 +186,12 @@ def main(args):
                     started = True
                     pygame.display.set_caption("Visualiser: Wilson's Algorithm")
                     run = wilson(lambda : draw(WIN, grid, togglegrid, 'wil'), grid, MODE)
+                    started = False
+                
+                if event.key == pygame.K_h and not started and not start and not end:
+                    started = True
+                    pygame.display.set_caption("Visualiser: Hunt and Kill algorithm")
+                    run = hunt(lambda : draw(WIN, grid, togglegrid), grid, MODE)
                     started = False
 
 
@@ -549,4 +556,4 @@ def fillhelp(inv, btn, inv2, btn2, btn3, page):
     pygame.display.update()
 
 
-mainpage(parse())
+main(parse())

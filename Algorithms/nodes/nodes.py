@@ -64,6 +64,9 @@ class Nodes:
     def make_barrier(self):
         self.colour = BLACK
         self.animator = 7
+    
+    def barrier(self):
+        self.colour = BLACK
 
     def make_start(self):
         self.colour = ORANGE

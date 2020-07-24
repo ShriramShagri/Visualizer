@@ -60,6 +60,7 @@ Keys:
 |   s	|  Draw maze using Sidewinder algorithm	|
 |  b 	|  Draw maze using Recursive backtracking algorithm	|
 |  u 	|  Draw maze using Aldous Broder algorithm	|
+|  h 	|  Draw maze using Hunt and Kill algorithm	|
 |  w 	|  	Draw maze using Wilson's algorithm|
 |  e 	|  	Draw maze using Eller's algorithm|
 | a  	|  Run A* algorithm	|
