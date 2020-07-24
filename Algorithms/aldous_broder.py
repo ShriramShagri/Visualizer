@@ -3,6 +3,9 @@ from random import randint, choice
 
 extra_vis = False
 
+row = 24
+col = 49
+
 clk = pygame.time.Clock()
 
 def drawedge(draw, edge, grid, mode):
@@ -35,11 +38,11 @@ def getcoordinate(edge):
 def getnextnode(node):
     x, y = node
     neighbours = []
-    if x < 24:
+    if x < row:
         neighbours.append((x+1, y))
     if x > 0:
         neighbours.append((x-1, y))
-    if y < 24:
+    if y < col:
         neighbours.append((x, y+1))
     if y > 0:
         neighbours.append((x, y-1))
@@ -52,13 +55,13 @@ def getrandom(node, visited):
     except:
         return []
     neighbours = []
-    if x < 24:
+    if x < row:
         if (x+1, y) not in visited:
             neighbours.append((x+1, y))
     if x > 0:
         if (x-1, y) not in visited:
             neighbours.append((x-1, y))
-    if y < 24:
+    if y < col:
         if (x, y+1) not in visited:
             neighbours.append((x, y+1))
     if y > 0:
@@ -77,7 +80,8 @@ def checkprev(node):
 ''' Function takes an average of 11000 iterations to complete NOT RECOMMENDED TO RUN'''
 def aldous(draw, grid, mode):
     ''' Function takes an average of 11000 iterations to complete NOT RECOMMENDED TO RUN'''
-    l = len(grid)
+    r = len(grid)
+    c = len(grid[0])
     global extra_vis
     for row in grid:
         for node in row:
@@ -87,24 +91,25 @@ def aldous(draw, grid, mode):
     if mode == 0:
         draw()
     i = 0
-    x = randint(0, l//2-1)
-    y = randint(0, l//2-1)
+    x = randint(0, r//2-1)
+    y = randint(0, c//2-1)
     prev = (x,y)
     visited = list()
 
     count = 0
 
     nextnode = None
-    while len(visited) < (l//2)**2:
+    while len(visited) < (c//2 + 1)*(r//2 + 1):
     # while c != 625:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return False
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_TAB:
-                    extra_vis = not extra_vis
                 if event.key == pygame.K_BACKSPACE:
-                    return True
+                    if mode == 0:
+                        mode = 1
+                    else:
+                        mode = 0
         if count <= 10:
             nextnode = getnextnode(prev)
         else:
@@ -123,6 +128,7 @@ def aldous(draw, grid, mode):
             visited.append(nextnode)
             drawedge(draw, (prev, nextnode), grid, mode)
             prev = nextnode
+    print(len(visited))
         
     if mode == 1:
         draw()

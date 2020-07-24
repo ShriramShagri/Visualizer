@@ -24,6 +24,12 @@ def ellers(draw, grid, mode):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return False
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_CAPSLOCK:
+                    if mode == 0:
+                        mode = 1
+                    else:
+                        mode = 0
     if mode == 1:
         draw()
         

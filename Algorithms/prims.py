@@ -1,11 +1,14 @@
 import pygame
 from random import choice, shuffle, randint
 
+row = 24
+col = 49
+
 def getneighbour(node, visited):
     x, y = node
     neighbours = []
     popy = []
-    if x < 24:
+    if x < row:
         if (x+1, y) in visited:
             popy.append((x+1, y))
         else:
@@ -15,7 +18,7 @@ def getneighbour(node, visited):
             popy.append((x-1, y))
         else:
             neighbours.append((x-1, y))
-    if y < 24:
+    if y < col:
         if (x, y+1) in visited:
             popy.append((x, y+1))
         else:
@@ -57,6 +60,8 @@ def getcoordinate(edge):
     
 
 def prims(draw, grid, mode):
+    r = len(grid)
+    c = len(grid[0])
     for row in grid:
         for node in row:
             node.reset()
@@ -64,18 +69,24 @@ def prims(draw, grid, mode):
     if mode == 0:
         draw()
 
-    x = randint(0, len(grid)//2-1)
-    y = randint(0, len(grid)//2-1)
+    x = randint(0, r//2-1)
+    y = randint(0, c//2-1)
     start = (x, y)
     visited = {start}
     tovisit, p = getneighbour(start, visited)
     tovisit = set(tovisit)
     count = 1
 
-    while count < (len(grid)//2)**2-1:
+    while count < (c//2 + 1)*(r//2 + 1) :
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return False
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_BACKSPACE:
+                    if mode == 0:
+                        mode = 1
+                    else:
+                        mode = 0
         
         p = []
         n = []

@@ -1,25 +1,26 @@
 import pygame
 from random import randint, choice
 
-store = ()
+row = 24
+col = 49
 clk = pygame.time.Clock()
 
 def update(node, visited):
     n = []
     x, y = node
-    if x < 24 and x > 0: # down
+    if x < row and x > 0: # down
         n.append((x + 1, y))
         n.append((x - 1, y))
     elif x == 0:
         n.append((x + 1, y))
-    elif x == 24:
+    elif x == row:
         n.append((x - 1, y))
-    if y < 24 and y > 0: # down
+    if y < col and y > 0: # down
         n.append((x, y + 1))
         n.append((x, y - 1))
     elif y == 0:
         n.append((x, y + 1))
-    elif y == 24:
+    elif y == col:
         n.append((x, y - 1))
     for nodes in visited:
         if nodes in n:
@@ -48,8 +49,8 @@ def drawsquare(draw, grid, spot, prev, mode, color = ''):
         y = y1 * 2
     
     if color != '':
-        grid[x][y].make_closed()
-        grid[x2*2][y2*2].make_closed()
+        grid[x][y].tracker()
+        grid[x2*2][y2*2].tracker()
     else:
         grid[x][y].remove_barrier()
         grid[x2*2][y2*2].remove_barrier()
@@ -60,16 +61,16 @@ def backtrack(draw, grid, mode):
     global store
     pygame.init()
     run = True
-    for row in grid:
-        for node in row:
+    for rw in grid:
+        for node in rw:
             node.reset()
             node.invert()
     if mode == 0:
         draw()
         
     stack = []
-    x = randint(0, 24)
-    y = randint(0, 24)
+    x = randint(0, row-1)
+    y = randint(0, col-1)
     stack.append((x, y)) 
     visited = {(x, y)}
     # grid[x*2][y*2].remove_barrier()
@@ -85,8 +86,13 @@ def backtrack(draw, grid, mode):
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     run = False
-                    for row in grid:
-                        for node in row:
+                if event.key == pygame.K_BACKSPACE:
+                    if mode == 0:
+                        mode = 1
+                    else:
+                        mode = 0
+                    for rw in grid:
+                        for node in rw:
                             if node.is_closed():
                                 node.reset()
                     break

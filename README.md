@@ -13,7 +13,7 @@ Maze:
 * Kruskal's algorithm
 * Sidewinder algorithm
 * Recursive backtracking algorithm
-* Aldous Broder algorithm
+* Aldous Broder algorithm (Modified)
 * Wilson's algorithm
 
 ---

@@ -33,6 +33,12 @@ def dijkstra(draw, grid, start, end, mode):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 False
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_BACKSPACE:
+                    if mode == 0:
+                        mode = 1
+                    else:
+                        mode = 0
         
         current = openset.get()[2]
         opensethash.remove(current)

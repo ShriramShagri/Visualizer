@@ -1,6 +1,9 @@
 import pygame
 from random import shuffle, randint, choice
 
+row = 24
+col = 49
+
 def rand():
     return randint(0,1)
 
@@ -25,8 +28,8 @@ def sidewinder(draw, grid, mode):
     pygame.init()
     run = []
 
-    for row in grid:
-        for node in row:
+    for rw in grid:
+        for node in rw:
             node.reset()
             node.invert()
     if mode == 0:
@@ -39,13 +42,19 @@ def sidewinder(draw, grid, mode):
             draw()
     i = 1
 
-    while i != len(grid)//2:
+    while i != row + 1:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return False
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_BACKSPACE:
+                    if mode == 0:
+                        mode = 1
+                    else:
+                        mode = 0
             
         
-        for j in range(len(grid[i])//2):
+        for j in range(col+ 1):
             
             current = (i, j)
             run.append(current)

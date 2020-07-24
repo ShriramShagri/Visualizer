@@ -1,9 +1,10 @@
 import pygame
 from random import randint, choice, shuffle
 
-store = ()
+row = 24
+col = 49
 GREEN = (0,255,0)
-clk = pygame.time.Clock()
+# clk = pygame.time.Clock()
 
 def findparent(v, parent):
     if parent[v] == v:
@@ -37,54 +38,72 @@ def drawedge(draw, edge, grid, mode):
     if mode == 0:
         draw()
 
+def flash(draw, edge, grid, mode):
+    x1, y1, x2, y2, x, y = getcoordinate(edge)
+    
+    grid[x1*2][y1*2].getwil1()
+    grid[x][y].getwil1()
+    grid[x2*2][y2*2].getwil1()
+    if mode == 0:
+        draw()
+
 def kruskal(draw, grid, mode):
     pygame.init()
-    Quit = False
-
-    for row in grid:
-        for node in row:
+    r = len(grid)
+    c = len(grid[0])
+    for rw in grid:
+        for node in rw:
             node.reset()
             node.invert()
     if mode == 0:
         draw()
 
     edgelist = []
-    for i in range(25):
-        for j in range(25):
-            if i == 24 and j == 24:
+    for i in range(row + 1):
+        for j in range(col + 1):
+            if i == row and j == col:
                 continue
-            elif j == 24:
+            elif j == col:
                 edgelist.append(((i, j), (i+1, j)))
-            elif i == 24:
+            elif i == row:
                 edgelist.append(((i, j), (i, j+1)))
             else:
                 edgelist.append(((i, j), (i+1, j)))
                 edgelist.append(((i, j), (i, j+1)))
     shuffle(edgelist)
 
-    parent = [i for i in range(625)]
+    parent = [i for i in range((c//2 + 1)*(r//2 + 1))]
 
-    i = 0
     count = 0
-    while count != 624 and not Quit:
+    while count != (c//2 + 1)*(r//2 + 1) - 1:
         # clk.tick(45)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return False
-        
-        current = edgelist[i]
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_BACKSPACE:
+                    if mode == 0:
+                        mode = 1
+                    else:
+                        mode = 0
+        try:
+            current = edgelist.pop()
+        except:
+            break
         x1, y1 = current[0]
         x2, y2 = current[1]
 
-        sourceparent = findparent(x1*25 - (25 - y1), parent)
-        destparent = findparent(x2*25 - (25 - y2), parent)
+        sourceparent = findparent(y1*(r//2 + 1) - ((c//2 + 1) - x1), parent)
+        destparent = findparent(y2*(r//2 + 1) - ((c//2 + 1) - x2), parent)
+        temp = grid
+        flash(draw, current, grid, mode)
+        grid = temp
 
         if sourceparent != destparent:
             drawedge(draw, current, grid, mode)
             count += 1
             parent[sourceparent] = destparent
         
-        i += 1
     if mode == 1:
         draw()
     return True

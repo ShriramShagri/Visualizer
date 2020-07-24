@@ -10,19 +10,24 @@ PURPLE = (128,0,128)
 ORANGE = (255,165,0)
 GREY = (128,128,128)
 TURQUOISE = (64,224,208)
+LIGHTGREEN = (50,205,50)
+LIGHTRED = (255, 127, 127)
+LIGHTGREEN2 = (55,205,55)
+LIGHTRED2 = (255, 130, 130)
 
 
 class Nodes:
-    def __init__(self, row, col, width, total_rows, mode):
+    def __init__(self, row, col, width, total_rows, total_cols, mode):
         self.row = row
         self.col = col
-        self.x = row * width
-        self.y = col * width
+        self.y = row * width
+        self.x = col * width
         self.colour = WHITE
         self.neighbours = []
         self.neighbournodes = []
         self.width = width
         self.total_rows = total_rows
+        self.total_cols = total_cols
         self.mode = mode
         self.animator = 1
 
@@ -74,23 +79,42 @@ class Nodes:
     
     def remove_barrier(self):
         self.colour = WHITE
-        self.animator = 7
+        self.animator = 8
         
     def leader(self):
         self.colour = GREEN
     
     def tracker(self):
-        self.colour = RED
+        self.colour = LIGHTRED
+        self.animator = 8
+
+    def wil1(self):
+        self.colour = LIGHTGREEN2
         self.animator = 1
 
+    def wil2(self):
+        self.colour = LIGHTRED2
+        self.animator = 1
+
+    def getwil1(self):
+        return self.colour == LIGHTGREEN2
+
+    def getwil2(self):
+        return self.colour == LIGHTRED2
+
     def draw(self, win):
+        noskip = True
         if self.mode == 1 and (self.colour == RED or self.colour == GREEN):
             self.colour = WHITE
-        if self.animator == 7 and self.colour != WHITE:
+        if self.animator == 8:
+            pygame.draw.rect(win, LIGHTGREEN, (self.x, self.y, self.width, self.width))
+            noskip = False
+        if self.animator == 7 and (self.colour != WHITE or self.colour != LIGHTRED):
             pygame.draw.rect(win, WHITE, (self.x, self.y, self.width, self.width))
         gap = self.width / self.animator
         pos = (self.width - gap) / 2
-        pygame.draw.rect(win, self.colour, (self.x + pos, self.y + pos, gap, gap))
+        if noskip:
+            pygame.draw.rect(win, self.colour, (self.x + pos, self.y + pos, gap, gap))
         if self.animator > 1:
             self.animator -= 1
     
@@ -108,7 +132,7 @@ class Nodes:
         if self.row > 0 and not grid[self.row - 1][self.col].is_barrier(): # up
             self.neighbours.append(grid[self.row - 1][self.col])
 
-        if self.col < self.total_rows - 1 and not grid[self.row][self.col + 1].is_barrier(): # right
+        if self.col < self.total_cols - 1 and not grid[self.row][self.col + 1].is_barrier(): # right
             self.neighbours.append(grid[self.row][self.col + 1])
 
         if self.col > 0 and not grid[self.row][self.col - 1].is_barrier(): # left
@@ -123,7 +147,7 @@ class Nodes:
             if self.row > 0: # up
                 self.neighbours.append(grid[self.row - 2][self.col])
 
-            if self.col < self.total_rows - 1: # right
+            if self.col < self.total_cols - 1: # right
                 self.neighbours.append(grid[self.row][self.col + 2])
 
             if self.col > 0: # left
