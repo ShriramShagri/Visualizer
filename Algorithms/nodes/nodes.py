@@ -137,6 +137,25 @@ class Nodes:
             self.colour = self.prevcolour
             self.prevcolour = None
     
+    def drawwil(self, win):
+        noskip = True
+        if self.mode == 1 and (self.colour == RED or self.colour == GREEN):
+            self.colour = WHITE
+        if self.animator == 8:
+            pygame.draw.rect(win, LIGHTGREEN, (self.x, self.y, self.width, self.width))
+            noskip = False
+        if self.animator == 7 and (self.colour != WHITE or self.colour != LIGHTRED):
+            pygame.draw.rect(win, WHITE, (self.x, self.y, self.width, self.width))
+        gap = self.width / self.animator
+        pos = (self.width - gap) / 2
+        if noskip:
+            pygame.draw.rect(win, self.colour, (self.x + pos, self.y + pos, gap, gap))
+        if self.animator > 1:
+            self.animator -= 1
+        if self.prevcolour:
+            self.colour = self.prevcolour
+            self.prevcolour = None
+    
     def invert(self):
         if self.colour == BLACK:
             self.colour = WHITE

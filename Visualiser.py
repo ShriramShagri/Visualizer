@@ -15,6 +15,7 @@ from Algorithms.ellers import ellers
 from Algorithms.aldous_broder import aldous
 from Algorithms.wilson import wilson
 from Algorithms.hunt_and_kill import hunt
+from Algorithms.growing_tree import tree
 
 FILEPATH = os.getcwd()
 
@@ -59,7 +60,8 @@ def draw(win, grid, t, w=''):
     for row in grid:
         for node in row:
             if w == 'wil':
-                node.drawwil(win)
+                # node.drawwil(win)
+                node.draw(win)
             else:
                 node.draw(win)
     if t:
@@ -192,6 +194,12 @@ def main(args):
                     started = True
                     pygame.display.set_caption("Visualiser: Hunt and Kill algorithm")
                     run = hunt(lambda : draw(WIN, grid, togglegrid), grid, MODE)
+                    started = False
+
+                if event.key == pygame.K_g and not started and not start and not end:
+                    started = True
+                    pygame.display.set_caption("Visualiser: Growing Tree algorithm")
+                    run = tree(lambda : draw(WIN, grid, togglegrid), grid, MODE)
                     started = False
 
 

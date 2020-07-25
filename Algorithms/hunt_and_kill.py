@@ -63,7 +63,8 @@ def drawedge(draw, grid, node, visited, mode):
     
 
 def gohunt(draw, grid, n, i, visited, mode):
-    drawrow(draw, grid, i, mode)
+    if mode == 0:
+        drawrow(draw, grid, i, mode)
     for j in range(col+1):
         if (i, j) in n:
             return (i, j)
@@ -133,6 +134,8 @@ def hunt(draw, grid, mode):
             if event.type == pygame.QUIT:
                 return False
             if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    run = False
                 if event.key == pygame.K_BACKSPACE:
                     if mode == 0:
                         mode = 1

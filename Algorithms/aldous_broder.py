@@ -95,6 +95,7 @@ def aldous(draw, grid, mode):
     ''' Function takes an average of 11000 iterations to complete NOT RECOMMENDED TO RUN'''
     r = len(grid)
     c = len(grid[0])
+    run = True
     global extra_vis
     for row in grid:
         for node in row:
@@ -112,7 +113,7 @@ def aldous(draw, grid, mode):
     count = 0
 
     nextnode = None
-    while len(visited) < (c//2 + 1)*(r//2 + 1):
+    while len(visited) < (c//2 + 1)*(r//2 + 1) and run:
     # while c != 625:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -123,6 +124,8 @@ def aldous(draw, grid, mode):
                         mode = 1
                     else:
                         mode = 0
+                if event.key == pygame.K_ESCAPE:
+                    run = False
         if count <= 10:
             nextnode = getnextnode(prev)
         else:
