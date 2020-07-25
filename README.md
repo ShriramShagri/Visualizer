@@ -16,6 +16,7 @@ Maze:
 * Aldous Broder algorithm (Modified)
 * Wilson's algorithm
 * Hunt and Kill algorithm
+* Growing Tree algorithm
 
 ---
 #### To run the application:
@@ -62,6 +63,7 @@ Keys:
 |  b 	|  Draw maze using Recursive backtracking algorithm	|
 |  u 	|  Draw maze using Aldous Broder algorithm	|
 |  h 	|  Draw maze using Hunt and Kill algorithm	|
+|   g	|  Draw maze using Growing Tree algorithm	|
 |  w 	|  	Draw maze using Wilson's algorithm|
 |  e 	|  	Draw maze using Eller's algorithm|
 | a  	|  Run A* algorithm	|
