@@ -16,6 +16,7 @@ from Algorithms.aldous_broder import aldous
 from Algorithms.wilson import wilson
 from Algorithms.hunt_and_kill import hunt
 from Algorithms.growing_tree import tree
+from Algorithms.binary_tree import binary
 
 FILEPATH = os.getcwd()
 
@@ -148,7 +149,7 @@ def main(args):
                     sim = True
                     
 
-                if event.key == pygame.K_b and not started and not start and not end:
+                if event.key == pygame.K_r and not started and not start and not end:
                     started = True
                     pygame.display.set_caption("Visualiser: Recursive backtracking Algorithm")
                     run = backtrack(lambda : draw(WIN, grid, togglegrid), grid, MODE)
@@ -200,6 +201,12 @@ def main(args):
                     started = True
                     pygame.display.set_caption("Visualiser: Growing Tree algorithm")
                     run = tree(lambda : draw(WIN, grid, togglegrid), grid, MODE)
+                    started = False
+                
+                if event.key == pygame.K_b and not started and not start and not end:
+                    started = True
+                    pygame.display.set_caption("Visualiser: Binary Tree algorithm")
+                    run = binary(lambda : draw(WIN, grid, togglegrid), grid, MODE)
                     started = False
 
 

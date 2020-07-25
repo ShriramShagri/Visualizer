@@ -17,6 +17,7 @@ Maze:
 * Wilson's algorithm
 * Hunt and Kill algorithm
 * Growing Tree algorithm (newest and random choices combined)
+* Binary Tree algorithm 
 
 ---
 #### To run the application:
@@ -60,10 +61,11 @@ Keys:
 | p  	|  Draw maze using Prim's algorithm	|
 |  k 	|  Draw maze using Kruskal's algorithm	|
 |   s	|  Draw maze using Sidewinder algorithm	|
-|  b 	|  Draw maze using Recursive backtracking algorithm	|
+|  r 	|  Draw maze using Recursive backtracking algorithm	|
 |  u 	|  Draw maze using Aldous Broder algorithm	|
 |  h 	|  Draw maze using Hunt and Kill algorithm	|
 |   g	|  Draw maze using Growing Tree algorithm	|
+|   b	|  Draw maze using Binary Tree algorithm	|
 |  w 	|  	Draw maze using Wilson's algorithm|
 |  e 	|  	Draw maze using Eller's algorithm|
 | a  	|  Run A* algorithm	|
