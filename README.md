@@ -22,7 +22,7 @@ Maze:
 ---
 #### To run the application:
 
-Install pygame
+Install modules
 ```bash
 pip install pygame
 pip install argparse
@@ -36,6 +36,12 @@ or
 ```
 python app.py --help
 ```
+
+Run to get started right away!:
+```bash
+python app.py
+```
+
 ---
 #### To use the tool:
 Different coloured squares represents the following:
