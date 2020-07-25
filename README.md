@@ -16,7 +16,7 @@ Maze:
 * Aldous Broder algorithm (Modified)
 * Wilson's algorithm
 * Hunt and Kill algorithm
-* Growing Tree algorithm
+* Growing Tree algorithm (newest and random choices combined)
 
 ---
 #### To run the application:
