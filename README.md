@@ -15,7 +15,7 @@ Maze:
 * Recursive backtracking algorithm
 * Aldous Broder algorithm (Modified)
 * Wilson's algorithm
-* Hunt and Kill algorithm
+* Hunt and Kill algorithm (Modified)
 * Growing Tree algorithm (newest and random choices combined)
 * Binary Tree algorithm 
 

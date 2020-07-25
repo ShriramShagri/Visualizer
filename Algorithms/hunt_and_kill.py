@@ -71,6 +71,7 @@ def gohunt(draw, grid, n, i, visited, mode):
     return None
 
 def drawrow(draw, grid, row, mode):
+    row *= 2
     for rw in grid:
         for node in rw:
             if node.if_open_prev():
@@ -109,6 +110,17 @@ def check(n):
         return True
     return False
 
+def getrow(visited):
+    i = 0
+    run = True
+    for i in range(row + 1):
+        for j in range(col + 1):
+            if (i, j) not in visited:
+                run = False
+        if not run:
+            break
+    return i
+
 def hunt(draw, grid, mode):
     run = True
     l = len(grid)
@@ -119,6 +131,7 @@ def hunt(draw, grid, mode):
     if mode == 0:
         draw()
     
+    i = 0
     stack = []
     x = randint(0, row-1)
     y = randint(0, col-1)
@@ -152,7 +165,7 @@ def hunt(draw, grid, mode):
         else:
             stack = []
             n = neighbours(visited)
-            i = 0
+            i = getrow(visited)
             while True:
                 new = gohunt(draw, grid, n, i, visited, mode)
                 i += 1
