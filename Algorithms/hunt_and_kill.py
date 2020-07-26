@@ -63,8 +63,8 @@ def drawedge(draw, grid, node, visited, mode):
     
 
 def gohunt(draw, grid, n, i, visited, mode):
-    if mode == 0:
-        drawrow(draw, grid, i, mode)
+    # if mode == 0:
+        # drawrow(draw, grid, i, mode)
     for j in range(col+1):
         if (i, j) in n:
             return (i, j)

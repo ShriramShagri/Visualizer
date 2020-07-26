@@ -96,10 +96,10 @@ def kruskal(draw, grid, mode):
         sourceparent = findparent(y1*(r//2 + 1) - ((c//2 + 1) - x1), parent)
         destparent = findparent(y2*(r//2 + 1) - ((c//2 + 1) - x2), parent)
         temp = grid
-        flash(draw, current, grid, mode)
         grid = temp
 
         if sourceparent != destparent:
+            flash(draw, current, grid, mode)
             drawedge(draw, current, grid, mode)
             count += 1
             parent[sourceparent] = destparent

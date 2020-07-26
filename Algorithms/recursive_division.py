@@ -8,8 +8,11 @@ mode = 0
 def division(draw, grid, m):
     global mode
     run = True
-    l = len(grid)
-    t = ['row', 'col']
+    for rw in grid:
+        for node in rw:
+            node.reset()
+
+
     while run:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -26,6 +29,7 @@ def division(draw, grid, m):
         run = False
     if mode == 1:
         draw()
+    mode = 0
         
     return True
 
