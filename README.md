@@ -18,6 +18,7 @@ Maze:
 * Hunt and Kill algorithm (Modified)
 * Growing Tree algorithm (newest and random choices combined)
 * Binary Tree algorithm 
+* Recursive division algorithm 
 
 ---
 #### To run the application:
@@ -72,6 +73,7 @@ Keys:
 |  h 	|  Draw maze using Hunt and Kill algorithm	|
 |   g	|  Draw maze using Growing Tree algorithm	|
 |   b	|  Draw maze using Binary Tree algorithm	|
+|   q	|  Draw maze using Recursive Division algorithm	|
 |  w 	|  	Draw maze using Wilson's algorithm|
 |  e 	|  	Draw maze using Eller's algorithm|
 | a  	|  Run A* algorithm	|
