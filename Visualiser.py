@@ -17,6 +17,7 @@ from Algorithms.wilson import wilson
 from Algorithms.hunt_and_kill import hunt
 from Algorithms.growing_tree import tree
 from Algorithms.binary_tree import binary
+from Algorithms.recursive_division import division
 
 FILEPATH = os.getcwd()
 
@@ -207,6 +208,12 @@ def main(args):
                     started = True
                     pygame.display.set_caption("Visualiser: Binary Tree algorithm")
                     run = binary(lambda : draw(WIN, grid, togglegrid), grid, MODE)
+                    started = False
+                
+                if event.key == pygame.K_q and not started and not start and not end:
+                    started = True
+                    pygame.display.set_caption("Visualiser: Recursive Division algorithm")
+                    run = division(lambda : draw(WIN, grid, togglegrid), grid, MODE)
                     started = False
 
 
