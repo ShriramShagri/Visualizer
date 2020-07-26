@@ -5,20 +5,20 @@ A simple tool built step by step visualisation for path finding and maze creatin
 ### Included algorithms:
 
 Path Finding:
-* A* Path finding algorithm
-* Dijkstra algorithm
+* [A* Path finding algorithm](https://github.com/ShriramShagri/Visualiser/blob/master/Algorithms/astar.py)
+* [Dijkstra algorithm](https://github.com/ShriramShagri/Visualiser/blob/master/Algorithms/dijkstra.py)
 
 Maze:
-* Prim's algorithm
-* Kruskal's algorithm
-* Sidewinder algorithm
-* Recursive backtracking algorithm
-* Aldous Broder algorithm (Modified)
-* Wilson's algorithm
-* Hunt and Kill algorithm (Modified)
-* Growing Tree algorithm (newest and random choices combined)
-* Binary Tree algorithm 
-* Recursive division algorithm 
+* [Prim's algorithm](https://github.com/ShriramShagri/Visualiser/blob/master/Algorithms/prims.py)
+* [Kruskal's algorithm](https://github.com/ShriramShagri/Visualiser/blob/master/Algorithms/kruskal.py)
+* [Sidewinder algorithm](https://github.com/ShriramShagri/Visualiser/blob/master/Algorithms/sidewinder.py)
+* [Recursive backtracking algorithm](https://github.com/ShriramShagri/Visualiser/blob/master/Algorithms/recursive_backtracking.py)
+* [Aldous Broder algorithm (Modified)](https://github.com/ShriramShagri/Visualiser/blob/master/Algorithms/aldous_broder.py)
+* [Wilson's algorithm](https://github.com/ShriramShagri/Visualiser/blob/master/Algorithms/wilson.py)
+* [Hunt and Kill algorithm](https://github.com/ShriramShagri/Visualiser/blob/master/Algorithms/hunt_and_kill.py) (Modified)
+* [Growing Tree algorithm](https://github.com/ShriramShagri/Visualiser/blob/master/Algorithms/growing_tree.py) (newest and random choices combined)
+* [Binary Tree algorithm](https://github.com/ShriramShagri/Visualiser/blob/master/Algorithms/binary_tree.py)
+* [Recursive division algorithm](https://github.com/ShriramShagri/Visualiser/blob/master/Algorithms/recursive_division.py)
 
 ---
 #### To run the application:
