@@ -33,11 +33,9 @@ pip install argparse
 ```
 
 Run command for more information:
-```
+```bash
 python app.py -h
-```
 or
-```
 python app.py --help
 ```
 
@@ -48,7 +46,7 @@ python app.py
 
 ---
 #### To use the tool:
-Different coloured squares represents the following:
+> Different coloured squares represents the following:
 
 |  Color 	|   Representation	|  
 |---	|---	|
@@ -60,7 +58,7 @@ Different coloured squares represents the following:
 |   Teal	|   End Node	|
 |   Purple	|   Shortest Path	|
 
-Keys:
+> Basic Keys:
 
 |   Key	|   Function	|
 |---	|---	|
@@ -68,18 +66,28 @@ Keys:
 |   Tab	|  Switch off or on grid 	|
 |   Mouse Right Click	|   Clear node or obstacle	|
 |   Mouse Left Click	|   Add Node or obstacle	|
-| p  	|  Draw maze using Prim's algorithm	|
-|  k 	|  Draw maze using Kruskal's algorithm	|
-|   s	|  Draw maze using Sidewinder algorithm	|
-|  r 	|  Draw maze using Recursive backtracking algorithm	|
-|  u 	|  Draw maze using Aldous Broder algorithm	|
-|  h 	|  Draw maze using Hunt and Kill algorithm	|
-|   g	|  Draw maze using Growing Tree algorithm	|
-|   b	|  Draw maze using Binary Tree algorithm	|
-|   q	|  Draw maze using Recursive Division algorithm	|
-|  w 	|  	Draw maze using Wilson's algorithm|
-|  e 	|  	Draw maze using Eller's algorithm|
-| a  	|  Run A* algorithm	|
+
+> Maze Generation:
+
+|   Key	|   Function	|
+|---	|---	|
+| p  	|   Prim's algorithm	|
+|  k 	|   Kruskal's algorithm	|
+|   s	|   Sidewinder algorithm	|
+|  r 	|   Recursive backtracking algorithm	|
+|  u 	|   Aldous Broder algorithm	|
+|  h 	|   Hunt and Kill algorithm	|
+|   g	|   Growing Tree algorithm	|
+|   b	|   Binary Tree algorithm	|
+|   q	|   Recursive Division algorithm	|
+|  w 	|  	 Wilson's algorithm|
+|  e 	|  	 Eller's algorithm|
+
+> Path Finding:
+
+|   Key	|   Function	|
+|---	|---	|
+| a  	|   A* algorithm	|
 | d  	|  Run Dijkstra algorithm	|
 |   	|  	|
 
