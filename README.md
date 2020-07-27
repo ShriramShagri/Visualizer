@@ -2,26 +2,26 @@
 
 A simple tool built step by step visualisation for path finding and maze creating algorithms 
 
-![Example](https://github.com/ShriramShagri/Visualiser/blob/master/Fonts/Example.png)
+![Example](Fonts/Example.png "Example")
 
 ### Included algorithms:
 
 Path Finding:
-* [A* Path finding algorithm](https://github.com/ShriramShagri/Visualiser/blob/master/Algorithms/astar.py)
-* [Dijkstra algorithm](https://github.com/ShriramShagri/Visualiser/blob/master/Algorithms/dijkstra.py)
+* [A* Path finding algorithm](Algorithms/astar.py)
+* [Dijkstra algorithm](Algorithms/dijkstra.py)
 
 Maze:
-* [Prim's algorithm](https://github.com/ShriramShagri/Visualiser/blob/master/Algorithms/prims.py)
-* [Kruskal's algorithm](https://github.com/ShriramShagri/Visualiser/blob/master/Algorithms/kruskal.py)
-* [Sidewinder algorithm](https://github.com/ShriramShagri/Visualiser/blob/master/Algorithms/sidewinder.py)
-* [Eller's algorithm](https://github.com/ShriramShagri/Visualiser/blob/master/Algorithms/ellers.py)
-* [Recursive backtracking algorithm](https://github.com/ShriramShagri/Visualiser/blob/master/Algorithms/recursive_backtracking.py)
-* [Aldous Broder algorithm (Modified)](https://github.com/ShriramShagri/Visualiser/blob/master/Algorithms/aldous_broder.py)
-* [Wilson's algorithm](https://github.com/ShriramShagri/Visualiser/blob/master/Algorithms/wilson.py)
-* [Hunt and Kill algorithm](https://github.com/ShriramShagri/Visualiser/blob/master/Algorithms/hunt_and_kill.py) (Modified)
-* [Growing Tree algorithm](https://github.com/ShriramShagri/Visualiser/blob/master/Algorithms/growing_tree.py) (newest and random choices combined)
-* [Binary Tree algorithm](https://github.com/ShriramShagri/Visualiser/blob/master/Algorithms/binary_tree.py)
-* [Recursive division algorithm](https://github.com/ShriramShagri/Visualiser/blob/master/Algorithms/recursive_division.py)
+* [Prim's algorithm](Algorithms/prims.py)
+* [Kruskal's algorithm](Algorithms/kruskal.py)
+* [Sidewinder algorithm](Algorithms/sidewinder.py)
+* [Eller's algorithm](Algorithms/ellers.py)
+* [Recursive backtracking algorithm](Algorithms/recursive_backtracking.py)
+* [Aldous Broder algorithm (Modified)](Algorithms/aldous_broder.py)
+* [Wilson's algorithm](Algorithms/wilson.py)
+* [Hunt and Kill algorithm](Algorithms/hunt_and_kill.py) (Modified)
+* [Growing Tree algorithm](Algorithms/growing_tree.py) (newest and random choices combined)
+* [Binary Tree algorithm](Algorithms/binary_tree.py)
+* [Recursive division algorithm](Algorithms/recursive_division.py)
 
 ---
 #### To run the application:
