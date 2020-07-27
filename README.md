@@ -2,7 +2,7 @@
 
 A simple tool built step by step visualisation for path finding and maze creating algorithms 
 
-[](https://github.com/ShriramShagri/Visualiser/blob/master/Fonts/Example.png)
+![Example](https://github.com/ShriramShagri/Visualiser/blob/master/Fonts/Example.png)
 
 ### Included algorithms:
 
