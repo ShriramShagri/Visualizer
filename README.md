@@ -2,7 +2,7 @@
 
 A simple tool built step by step visualisation for path finding and maze creating algorithms 
 
-[zzz]()
+[](https://github.com/ShriramShagri/Visualiser/blob/master/Fonts/Example.png)
 
 ### Included algorithms:
 
@@ -14,6 +14,7 @@ Maze:
 * [Prim's algorithm](https://github.com/ShriramShagri/Visualiser/blob/master/Algorithms/prims.py)
 * [Kruskal's algorithm](https://github.com/ShriramShagri/Visualiser/blob/master/Algorithms/kruskal.py)
 * [Sidewinder algorithm](https://github.com/ShriramShagri/Visualiser/blob/master/Algorithms/sidewinder.py)
+* [Eller's algorithm](https://github.com/ShriramShagri/Visualiser/blob/master/Algorithms/ellers.py)
 * [Recursive backtracking algorithm](https://github.com/ShriramShagri/Visualiser/blob/master/Algorithms/recursive_backtracking.py)
 * [Aldous Broder algorithm (Modified)](https://github.com/ShriramShagri/Visualiser/blob/master/Algorithms/aldous_broder.py)
 * [Wilson's algorithm](https://github.com/ShriramShagri/Visualiser/blob/master/Algorithms/wilson.py)
