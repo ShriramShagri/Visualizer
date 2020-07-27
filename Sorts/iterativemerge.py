@@ -1,5 +1,8 @@
 import pygame
 
+
+
+
 clk = pygame.time.Clock()
 BLACK = (0,0,0)
 
@@ -7,7 +10,7 @@ def iterativemerge(draw, grid):
     temp = [i.value for i in grid]
     run = True
     slow = False
-
+    
     length = len(grid)
     i = 2
     while i < length:
@@ -23,31 +26,39 @@ def iterativemerge(draw, grid):
                     slow = not slow
         
         for d in range(0, length, i):
-            clk.tick(20)
-            low = d
-            high = d + i - 1
-            mid = (low + high + 1) // 2
-            temp = merge1(temp, low, mid, high)
+            if 100//i > 7:
+                clk.tick(100//i)
+            else:
+                clk.tick(10)
+            l = d
+            h = d + i - 1
+            m = (l + h + 1) // 2
+            temp = merge1(temp, l, m, h)
             for node in range(length):
                 if grid[node].value != temp[node]:
                     grid[node].value = temp[node]
                     grid[node].make_green()
             draw()
-        # final merge of last two parts
+        
         if i * 2 >= len(temp):
-            mid = d
-            temp = merge1(temp, 0, mid, len(temp) - 1)
+            m = d
+            temp = merge1(temp, 0, m, len(temp) - 1)
             for node in range(0, len(temp)):
                 grid[node].value = temp[node]
         i *= 2
     draw()  
     return True, grid
 
-def merge1(temp, low, mid, high):
+def merge1(temp, l, m, h):
     result = []
-    left, right = temp[low:mid], temp[mid : high + 1]
+    left, right = temp[l : m], temp[m : h + 1]
     while left and right:
-        result.append((left if left[0] <= right[0] else right).pop(0))
-    temp[low : high + 1] = result + left + right
+        if left[0] <= right[0]:
+            t = left
+        else:
+            t = right
+        result.append(t.pop(0))
+
+    temp[l : h + 1] = result + left + right
     return temp
 

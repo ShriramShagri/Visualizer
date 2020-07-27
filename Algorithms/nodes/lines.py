@@ -8,9 +8,9 @@ WHITE = (255,255,255)
 W = 1584
 H = 784
 
-WIDTH = 1584/198
+WIDTH = 1584/396
 
-HEIGHT = 784/198
+HEIGHT = 784/396
 
 class Line():
     def __init__(self, x, no):

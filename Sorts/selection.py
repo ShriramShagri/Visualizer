@@ -19,17 +19,17 @@ def selection(draw, grid):
                     return True
                 if event.key == pygame.K_EQUALS:
                     slow = not slow
-        least = i
+        l = i
         for k in range(i + 1, length):
-            if grid[k].value < grid[least].value:
-                least = k
+            if grid[k].value < grid[l].value:
+                l = k
             if slow:
                 grid[k].make_red()
-                grid[least].make_green()
+                grid[l].make_green()
                 draw()
-        if least != i:
-            grid[least].value, grid[i].value = (grid[i].value, grid[least].value)
-            grid[least].make_green()
+        if l != i:
+            grid[l].value, grid[i].value = grid[i].value, grid[l].value
+            grid[l].make_green()
             grid[i].make_green()
             draw()
         i += 1

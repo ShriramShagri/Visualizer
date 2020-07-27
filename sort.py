@@ -8,8 +8,12 @@ from Sorts.iterativemerge import iterativemerge
 from random import shuffle, randint, choice
 
 
+pygame.init()
+
+infoObject = pygame.display.Info()
+
 WIDTH = 1584
-COLUMNS = 198
+COLUMNS = 396
 
 HEIGHT = 784
 ROWS = 49
@@ -21,7 +25,7 @@ pygame.display.set_caption("Visualiser: Edit")
 
 def make_lines():
     grid = []
-    for i in range(1, 199):
+    for i in range(1, COLUMNS+1):
         node = Line(i, i-1)
         grid.append(node)
     return grid
@@ -39,6 +43,7 @@ def draw(win, grid):
     pygame.display.update()
 
 def sortloop():
+    print((infoObject.current_w, infoObject.current_h))
     
     grid = make_lines()
     pygame.init()
@@ -46,7 +51,7 @@ def sortloop():
     started = False
     already = False
 
-    l = [i for i in range(1,199)]
+    l = [i for i in range(1,COLUMNS+1)]
     shuffle(l)
     for node in grid:
         g = choice(l)
@@ -84,7 +89,7 @@ def sortloop():
                     started = False
 
                 if event.key == pygame.K_SPACE:
-                    l = [i for i in range(1,199)]
+                    l = [i for i in range(1,COLUMNS+1)]
                     shuffle(l)
                     for node in grid:
                         g = choice(l)

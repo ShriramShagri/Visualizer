@@ -20,12 +20,12 @@ def bubble(draw, grid):
                 if event.key == pygame.K_EQUALS:
                     slow = not slow
         swapped = False
-        for j in range(length - 1 - i):
-            if grid[j].value > grid[j + 1].value:
+        for j in range(length-1 - i):
+            if grid[j].value > grid[j+1].value:
                 swapped = True
-                grid[j].value, grid[j + 1].value = grid[j + 1].value, grid[j].value
+                grid[j].value, grid[j+1].value = grid[j+1].value, grid[j].value
                 grid[j].make_green()
-                grid[j + 1].make_green()
+                grid[j+1].make_green()
                 if slow:
                     draw()
         if not swapped:
