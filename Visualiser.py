@@ -56,7 +56,7 @@ def draw_grid(win):
     for i in range(ROWS):
         pygame.draw.line(win, GREY, (0, i*gap), (WIDTH, i*gap))
     for i in range(COLUMNS):
-        pygame.draw.line(win, GREY, (i*gap, 0), (i*gap, WIDTH))
+        pygame.draw.line(win, GREY, (i*gap, 0), (i*gap, HEIGHT))
 
 def draw(win, grid, t, w=''):
     for row in grid:
@@ -122,7 +122,6 @@ def main(args):
                 elif spot != end and spot != start:
                     spot.make_barrier()
                    
-
             elif pygame.mouse.get_pressed()[2]and not started:
                 pos = pygame.mouse.get_pos()
                 row, col = get_clicked(pos)
@@ -459,7 +458,6 @@ def helppage():
                     invh = True
                 else:
                     invh = False
-
                 
         WIN.blit(background, (0, 0))
         fillhelp(inv, backbtn, invh, nextpage, prevpage, page)
