@@ -13,9 +13,8 @@ WIDTH = 1584/198
 HEIGHT = 784/198
 
 class Line():
-    def __init__(self, x, no, mode):
+    def __init__(self, x, no):
         self.value = x
-        self.mode = mode
         self.color = WHITE
         self.flash = 0
         self.no = no

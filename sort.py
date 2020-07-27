@@ -1,9 +1,12 @@
 import pygame
 from Algorithms.nodes.lines import Line
 from Sorts.selection import selection
+from Sorts.bubble import bubble
+from Sorts.iterativemerge import iterativemerge
+
+
 from random import shuffle, randint, choice
 
-MODE = 0
 
 WIDTH = 1584
 COLUMNS = 198
@@ -19,7 +22,7 @@ pygame.display.set_caption("Visualiser: Edit")
 def make_lines():
     grid = []
     for i in range(1, 199):
-        node = Line(i, i-1, MODE)
+        node = Line(i, i-1)
         grid.append(node)
     return grid
 
@@ -35,15 +38,20 @@ def draw(win, grid):
     draw_grid(win)
     pygame.display.update()
 
-def sortloop(mode):
-    global MODE
-    MODE = mode
-
+def sortloop():
+    
     grid = make_lines()
     pygame.init()
     run = True
     started = False
-    already = True
+    already = False
+
+    l = [i for i in range(1,199)]
+    shuffle(l)
+    for node in grid:
+        g = choice(l)
+        node.evalu(g)
+        l.remove(g)
 
     while run:
         if not started:
@@ -52,12 +60,27 @@ def sortloop(mode):
         
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                return True 
+                return True
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_a and not started:
+                if event.key == pygame.K_1 and not started and not already:
                     started = True
                     pygame.display.set_caption("Visualiser: Selection Sort")
-                    run = selection(lambda : draw(WIN, grid), grid, MODE)
+                    run = selection(lambda : draw(WIN, grid), grid)
+                    already = True
+                    started = False
+
+                if event.key == pygame.K_2 and not started and not already:
+                    started = True
+                    pygame.display.set_caption("Visualiser: Selection Sort")
+                    run = bubble(lambda : draw(WIN, grid), grid)
+                    already = True
+                    started = False
+                
+                if event.key == pygame.K_3 and not started and not already:
+                    started = True
+                    pygame.display.set_caption("Visualiser: Selection Sort")
+                    run = iterativemerge(lambda : draw(WIN, grid), grid)
+                    already = True
                     started = False
 
                 if event.key == pygame.K_SPACE:
@@ -67,4 +90,6 @@ def sortloop(mode):
                         g = choice(l)
                         node.evalu(g)
                         l.remove(g)
-sortloop(0)
+                    already = False
+        pygame.display.set_caption("Visualiser:")
+sortloop()

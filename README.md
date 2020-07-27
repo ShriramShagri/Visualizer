@@ -1,6 +1,6 @@
 # Algorithm Visualiser
 
-A simple tool built step by step visualisation for path finding and maze creating algorithms 
+A simple tool built step by step visualisation for path finding, maze creating and sorting algorithms 
 
 ![Example](Fonts/Example.png "Example")
 
@@ -22,6 +22,11 @@ Maze:
 * [Growing Tree algorithm](Algorithms/growing_tree.py) (newest and random choices combined)
 * [Binary Tree algorithm](Algorithms/binary_tree.py)
 * [Recursive division algorithm](Algorithms/recursive_division.py)
+
+Sorting:
+* [Bubble Sort](Sorts/bubble.py)
+* [Merge Sort](Sorts/iterativemerge.py) (Iterative method)
+* [Selection Sort](Sorts/selection.py)
 
 ---
 #### To run the application:
@@ -88,9 +93,20 @@ python app.py
 |   Key	|   Function	|
 |---	|---	|
 | a  	|   A* algorithm	|
-| d  	|  Run Dijkstra algorithm	|
+| d  	|   Dijkstra algorithm	|
+|   	|  	|
+
+> Sorting:
+
+|   Key	|   Function	|
+|---	|---	|
+|   Space	| Shuffle 	|
+| 2  	|   Bubble Sort	|
+| 3  	|  Merge Sort (iterative)	|
+|  1 	|  Selection Sort	|
 |   	|  	|
 
 #### Note:
 1) Maze algorithms don't work if start and end nodes are mentioned already.
 2) Path finding algorithms work only if start and end nodes are mentioned.
+3) Sort algorithms work only when lines are shuffled 
