@@ -1,7 +1,7 @@
 import pygame
 
 clk = pygame.time.Clock()
-
+t = []
 def quick(draw, grid):
     global t
     temp = [i.value for i in grid]
@@ -10,38 +10,39 @@ def quick(draw, grid):
     slow = True
 
 
-    qsort(draw, grid, t, slow)
+    a = qsort(draw, grid, slow)
+    for i, nodes in enumerate(a):
+        nodes.make_red()
+        n = nodes.move(i+1)
+        if slow:
+            draw()
         
     return True, True
 
-def qsort(draw, grid, temp, slow):
+def qsort(draw, grid, slow):
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             exit()
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_BACKSPACE:
                 slow = not slow
-    length = len(temp)
+    length = len(grid)
     if length <= 1:
-        return temp
+        return grid
     else:
         
-        pivot = temp.pop()
+        pivot = grid.pop()
         
         greater, lesser = [], []
-        for element in temp:
+        for element in grid:
             if element.value > pivot.value:
                 greater.append(element)
             else:
                 lesser.append(element)
-        a = qsort(draw, grid, lesser, slow) + [pivot] + qsort(draw, grid, greater, slow)
-        for nodes in a:
+        a = qsort(draw, lesser, slow) + [pivot] + qsort(draw, greater, slow)
+        for i, nodes in enumerate(a):
             nodes.make_red()
-            n = nodes.move(nodes.value)
-            for node in grid:
-                if node.no == n:
-                    node.move(n)
-
+            n = nodes.move(i+1)
             if slow:
                 draw()
         if not slow:

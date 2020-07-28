@@ -21,6 +21,7 @@ from Sorts.pancake import pancake
 from Sorts.pigeon import pigeon
 from Sorts.quick import quick
 from Sorts.radix import radix
+from Sorts.shell import shell
 from Sorts.selection import selection
 from Sorts.wiggle import wiggle
 
@@ -197,16 +198,22 @@ def sortloop():
                     run, already = pigeon(lambda : draw(WIN, grid, togglegrid), grid)
                     started = False
                 
-                # if event.key == pygame.K_p and not started and not already:
-                #     started = True
-                #     pygame.display.set_caption("Visualiser: Quick Sort")
-                #     run, already = quick(lambda : draw(WIN, grid, togglegrid), grid)
-                #     started = False
+                if event.key == pygame.K_p and not started and not already:
+                    started = True
+                    pygame.display.set_caption("Visualiser: Quick Sort")
+                    run, already = quick(lambda : draw(WIN, grid, togglegrid), grid)
+                    started = False
 
                 if event.key == pygame.K_a and not started and not already:
                     started = True
                     pygame.display.set_caption("Visualiser: Radix Sort")
                     run, already = radix(lambda : draw(WIN, grid, togglegrid), grid)
+                    started = False
+                
+                if event.key == pygame.K_s and not started and not already:
+                    started = True
+                    pygame.display.set_caption("Visualiser: Shell Sort")
+                    run, already = shell(lambda : draw(WIN, grid, togglegrid), grid)
                     started = False
                 
                 if event.key == pygame.K_h and not started and not already:
