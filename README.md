@@ -47,6 +47,7 @@ Sorting:
 1) [Shell Sort](Sorts/shell.py)
 1) [Selection Sort](Sorts/selection.py)
 1) [Sleep Sort](Sorts/sleep.py)
+1) [Stooge Sort](Sorts/stooge.py)
 1) [Wiggle Sort](Sorts/wiggle.py)
 
 ---
@@ -146,6 +147,7 @@ python app.py
 |  s 	|  Selection Sort	|
 |  d 	|  Shell Sort	|
 |  f 	|  Sleep Sort	|
+|  g 	|  Stooge Sort	|
 |   j	|  	Wiggle Sort|
 |   	|  	|
 

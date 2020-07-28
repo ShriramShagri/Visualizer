@@ -24,6 +24,7 @@ from Sorts.radix import radix
 from Sorts.shell import shell
 from Sorts.selection import selection
 from Sorts.sleep import sleepsort
+from Sorts.stooge import stooge
 from Sorts.wiggle import wiggle
 
 
@@ -227,6 +228,12 @@ def sortloop():
                     started = True
                     pygame.display.set_caption("Visualiser: Sleep Sort")
                     run, already = sleepsort(lambda : draw(WIN, grid, togglegrid), grid)
+                    started = False
+                
+                if event.key == pygame.K_g and not started and not already:
+                    started = True
+                    pygame.display.set_caption("Visualiser: Stooge Sort")
+                    run, already = stooge(lambda : draw(WIN, grid, togglegrid), grid)
                     started = False
 
                 if event.key == pygame.K_j and not started:
