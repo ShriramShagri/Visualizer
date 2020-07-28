@@ -110,17 +110,18 @@ python app.py
 |   Key	|   Function	|
 |---	|---	|
 |   Space	| Shuffle 	|
-|  5 	|  Bead Sort	|
-|  6 	|  Bitonic Sort	|
-|  7 	|  Bolo Sort	|
-| 2  	|   Bubble Sort	|
-| 8  	|   Bucket Sort	|
-| 9  	|   Cocktail Shaker Sort	|
-| 0  	|   Comb Sort	|
-| q  	|   Counting Sort	|
-| 3  	|  Merge Sort (iterative)	|
-|  1 	|  Selection Sort	|
-|   4	|  	Wiggle Sort|
+|  1 	|  Bead Sort	|
+|  2 	|  Bitonic Sort	|
+|  3 	|  Bolo Sort	|
+| 4  	|   Bubble Sort	|
+| 5  	|   Bucket Sort	|
+| 6  	|   Cocktail Shaker Sort	|
+| 7  	|   Comb Sort	|
+| 8  	|   Counting Sort	|
+| 9  	|   Cycle Sort	|
+| g  	|  Merge Sort (iterative)	|
+|  h 	|  Selection Sort	|
+|   j	|  	Wiggle Sort|
 |   	|  	|
 
 #### Note:

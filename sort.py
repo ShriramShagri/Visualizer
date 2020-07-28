@@ -10,6 +10,7 @@ from Sorts.cocktail import cocktail
 from Sorts.comb import comb
 from Sorts.counting import counting
 from Sorts.cycle import cycle
+from Sorts.double import double
 from Sorts.iterativemerge import iterativemerge
 from Sorts.selection import selection
 from Sorts.wiggle import wiggle
@@ -81,71 +82,77 @@ def sortloop():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_1 and not started and not already:
                     started = True
-                    pygame.display.set_caption("Visualiser: Selection Sort")
-                    run, already = selection(lambda : draw(WIN, grid, togglegrid), grid)
-                    started = False
-                
-                if event.key == pygame.K_5 and not started and not already:
-                    started = True
                     pygame.display.set_caption("Visualiser: Bead Sort")
                     run, already = bead(lambda : draw(WIN, grid, togglegrid), grid)
                     started = False
                 
-                if event.key == pygame.K_6 and not started and not already:
+                if event.key == pygame.K_2 and not started and not already:
                     started = True
                     pygame.display.set_caption("Visualiser: Bitonic Sort")
                     run, already = bitonic(lambda : draw(WIN, grid, togglegrid), grid)
                     started = False
                 
-                if event.key == pygame.K_7 and not started and not already:
+                if event.key == pygame.K_3 and not started and not already:
                     started = True
                     pygame.display.set_caption("Visualiser: Bogo Sort")
                     run, already = bogo(lambda : draw(WIN, grid, togglegrid), grid)
                     started = False
 
-                if event.key == pygame.K_2 and not started and not already:
+                if event.key == pygame.K_4 and not started and not already:
                     started = True
                     pygame.display.set_caption("Visualiser: Bubble Sort")
                     run, already = bubble(lambda : draw(WIN, grid, togglegrid), grid)
                     started = False
                 
-                if event.key == pygame.K_8 and not started and not already:
+                if event.key == pygame.K_5 and not started and not already:
                     started = True
                     pygame.display.set_caption("Visualiser: Bucket Sort")
                     run, already = bucket(lambda : draw(WIN, grid, togglegrid), grid)
                     started = False
 
-                if event.key == pygame.K_9 and not started and not already:
+                if event.key == pygame.K_6 and not started and not already:
                     started = True
                     pygame.display.set_caption("Visualiser: Cocktail Shaker Sort")
                     run, already = cocktail(lambda : draw(WIN, grid, togglegrid), grid)
                     started = False
                 
-                if event.key == pygame.K_0 and not started and not already:
+                if event.key == pygame.K_7 and not started and not already:
                     started = True
                     pygame.display.set_caption("Visualiser: Comb Sort")
                     run, already = comb(lambda : draw(WIN, grid, togglegrid), grid)
                     started = False
                 
-                if event.key == pygame.K_q and not started and not already:
+                if event.key == pygame.K_8 and not started and not already:
                     started = True
                     pygame.display.set_caption("Visualiser: Counting Sort")
                     run, already = counting(lambda : draw(WIN, grid, togglegrid), grid)
                     started = False
                 
-                if event.key == pygame.K_w and not started and not already:
+                if event.key == pygame.K_9 and not started and not already:
                     started = True
-                    pygame.display.set_caption("Visualiser: Counting Sort")
+                    pygame.display.set_caption("Visualiser: Cycle Sort")
                     run, already = cycle(lambda : draw(WIN, grid, togglegrid), grid)
                     started = False
                 
-                if event.key == pygame.K_3 and not started and not already:
+                if event.key == pygame.K_0 and not started and not already:
+                    started = True
+                    pygame.display.set_caption("Visualiser: Double Sort")
+                    run, already = double(lambda : draw(WIN, grid, togglegrid), grid)
+                    started = False
+                
+                if event.key == pygame.K_g and not started and not already:
                     started = True
                     pygame.display.set_caption("Visualiser: Merge Sort(Iterative)")
                     run, already = iterativemerge(lambda : draw(WIN, grid, togglegrid), grid)
                     started = False
                 
-                if event.key == pygame.K_4 and not started:
+                if event.key == pygame.K_h and not started and not already:
+                    started = True
+                    pygame.display.set_caption("Visualiser: Selection Sort")
+                    run, already = selection(lambda : draw(WIN, grid, togglegrid), grid)
+                    started = False
+                
+                if event.key == pygame.K_j and not started:
                     started = True
                     pygame.display.set_caption("Visualiser: Wiggle Sort")
                     run = wiggle(lambda : draw(WIN, grid, togglegrid), grid)
