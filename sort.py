@@ -17,6 +17,7 @@ from Sorts.insertion import insertion
 from Sorts.merge import recursivemerge
 from Sorts.iterativemerge import iterativemerge
 from Sorts.oddeven import oddeven
+from Sorts.pancake import pancake
 from Sorts.selection import selection
 from Sorts.wiggle import wiggle
 
@@ -180,6 +181,12 @@ def sortloop():
                     pygame.display.set_caption("Visualiser: Odd Even Sort")
                     run, already = oddeven(lambda : draw(WIN, grid, togglegrid), grid)
                     started = False
+
+                if event.key == pygame.K_i and not started and not already:
+                    started = True
+                    pygame.display.set_caption("Visualiser: Pancake Sort")
+                    run, already = pancake(lambda : draw(WIN, grid, togglegrid), grid)
+                    started = False
                 
                 if event.key == pygame.K_h and not started and not already:
                     started = True
@@ -202,7 +209,7 @@ def sortloop():
                         l.remove(g)
                     pygame.display.set_caption("Visualiser: Shuffled")
                     already = False
-                if event.key == pygame.K_i:
+                if event.key == pygame.K_RSHIFT:
                     l = [i for i in range(1,COLUMNS+1)]
                     l = l[::-1]
                     for node in grid:

@@ -40,6 +40,7 @@ Sorting:
 * [Merge Sort](Sorts/iterativemerge.py) (Iterative method)
 * [Merge Sort](Sorts/recursivemerge.py) (Recursive method)
 * [Odd Even / Brick Sort](Sorts/oddeven.py)
+* [Pancake Sort](Sorts/pancake.py)
 * [Selection Sort](Sorts/selection.py)
 * [Wiggle Sort](Sorts/wiggle.py)
 
@@ -133,6 +134,7 @@ python app.py
 | t  	|  Merge Sort (Recursive)	|
 | y  	|  Merge Sort (iterative)	|
 | u  	|   Odd Even Sort	|
+|  i 	|  Pancake Sort	|
 |  h 	|  Selection Sort	|
 |   j	|  	Wiggle Sort|
 |   	|  	|
