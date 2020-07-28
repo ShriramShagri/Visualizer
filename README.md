@@ -7,43 +7,44 @@ A simple tool built step by step visualisation for path finding, maze creating a
 ### Included algorithms:
 
 Path Finding:
-* [A* Path finding algorithm](Algorithms/astar.py)
-* [Dijkstra algorithm](Algorithms/dijkstra.py)
+1) [A* Path finding algorithm](Algorithms/astar.py)
+1) [Dijkstra algorithm](Algorithms/dijkstra.py)
 
 Maze:
-* [Prim's algorithm](Algorithms/prims.py)
-* [Kruskal's algorithm](Algorithms/kruskal.py)
-* [Sidewinder algorithm](Algorithms/sidewinder.py)
-* [Eller's algorithm](Algorithms/ellers.py)
-* [Recursive backtracking algorithm](Algorithms/recursive_backtracking.py)
-* [Aldous Broder algorithm (Modified)](Algorithms/aldous_broder.py)
-* [Wilson's algorithm](Algorithms/wilson.py)
-* [Hunt and Kill algorithm](Algorithms/hunt_and_kill.py) (Modified)
-* [Growing Tree algorithm](Algorithms/growing_tree.py) (newest and random choices combined)
-* [Binary Tree algorithm](Algorithms/binary_tree.py)
-* [Recursive division algorithm](Algorithms/recursive_division.py)
+1) [Prim's algorithm](Algorithms/prims.py)
+1) [Kruskal's algorithm](Algorithms/kruskal.py)
+1) [Sidewinder algorithm](Algorithms/sidewinder.py)
+1) [Eller's algorithm](Algorithms/ellers.py)
+1) [Recursive backtracking algorithm](Algorithms/recursive_backtracking.py)
+1) [Aldous Broder algorithm (Modified)](Algorithms/aldous_broder.py)
+1) [Wilson's algorithm](Algorithms/wilson.py)
+1) [Hunt and Kill algorithm](Algorithms/hunt_and_kill.py) (Modified)
+1) [Growing Tree algorithm](Algorithms/growing_tree.py) (newest and random choices combined)
+1) [Binary Tree algorithm](Algorithms/binary_tree.py)
+1) [Recursive division algorithm](Algorithms/recursive_division.py)
 
 Sorting:
-* [Bead / Gravity Sort](Sorts/bead.py)
-* [Bitonic Sort](Sorts/bitonic.py)
-* [Bogo / Stupid Sort](Sorts/Bogo.py)
-* [Bubble Sort](Sorts/bubble.py)
-* [Bucket / Bin Sort](Sorts/bucket.py)
-* [Cocktail Shaker / Bidirectional Bubble / Ripple / Shuttle Sort](Sorts/cocktail.py)
-* [Comb Sort](Sorts/comb.py)
-* [Counting Sort](Sorts/counting.py)
-* [Cycle Sort](Sorts/cycle.py)
-* [Double Sort](Sorts/double.py)
-* [Gnome / Dubbed Stupid Sort](Sorts/gnome.py)
-* [Heap Sort](Sorts/heap.py)
-* [Insertion Sort](Sorts/insertion.py)
-* [Merge Sort](Sorts/iterativemerge.py) (Iterative method)
-* [Merge Sort](Sorts/recursivemerge.py) (Recursive method)
-* [Odd Even / Brick Sort](Sorts/oddeven.py)
-* [Pancake Sort](Sorts/pancake.py)
-* [Pigeonhole Sort](Sorts/pigeon.py)
-* [Selection Sort](Sorts/selection.py)
-* [Wiggle Sort](Sorts/wiggle.py)
+1) [Bead / Gravity Sort](Sorts/bead.py)
+1) [Bitonic Sort](Sorts/bitonic.py)
+1) [Bogo / Stupid Sort](Sorts/Bogo.py)
+1) [Bubble Sort](Sorts/bubble.py)
+1) [Bucket / Bin Sort](Sorts/bucket.py)
+1) [Cocktail Shaker / Bidirectional Bubble / Ripple / Shuttle Sort](Sorts/cocktail.py)
+1) [Comb Sort](Sorts/comb.py)
+1) [Counting Sort](Sorts/counting.py)
+1) [Cycle Sort](Sorts/cycle.py)
+1) [Double Sort](Sorts/double.py)
+1) [Gnome / Dubbed Stupid Sort](Sorts/gnome.py)
+1) [Heap Sort](Sorts/heap.py)
+1) [Insertion Sort](Sorts/insertion.py)
+1) [Merge Sort](Sorts/iterativemerge.py) (Iterative method)
+1) [Merge Sort](Sorts/recursivemerge.py) (Recursive method)
+1) [Odd Even / Brick Sort](Sorts/oddeven.py)
+1) [Pancake Sort](Sorts/pancake.py)
+1) [Pigeonhole Sort](Sorts/pigeon.py)
+1) [Quick Sort](Sorts/quick.py)
+1) [Selection Sort](Sorts/selection.py)
+1) [Wiggle Sort](Sorts/wiggle.py)
 
 ---
 #### To run the application:
@@ -137,6 +138,7 @@ python app.py
 | u  	|   Odd Even Sort	|
 |  i 	|  Pancake Sort	|
 |  o 	|  Pigeonhole Sort	|
+|  p 	|  Quick Sort	|
 |  h 	|  Selection Sort	|
 |   j	|  	Wiggle Sort|
 |   	|  	|
