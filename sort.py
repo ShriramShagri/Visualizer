@@ -3,7 +3,10 @@ from Algorithms.nodes.lines import Line
 
 from Sorts.bead import bead
 from Sorts.bitonic import bitonic
+from Sorts.bogo import bogo
 from Sorts.bubble import bubble
+from Sorts.bucket import bucket
+from Sorts.cocktail import cocktail
 from Sorts.iterativemerge import iterativemerge
 from Sorts.selection import selection
 from Sorts.wiggle import wiggle
@@ -17,10 +20,9 @@ pygame.init()
 infoObject = pygame.display.Info()
 
 WIDTH = 1584
-COLUMNS = 512
+COLUMNS = 256
 
 HEIGHT = 784
-ROWS = 49
 
 WHITE = (255,255,255)
 BLACK = (0,0,0)
@@ -77,43 +79,55 @@ def sortloop():
                 if event.key == pygame.K_1 and not started and not already:
                     started = True
                     pygame.display.set_caption("Visualiser: Selection Sort")
-                    run = selection(lambda : draw(WIN, grid, togglegrid), grid)
-                    already = True
+                    run, already = selection(lambda : draw(WIN, grid, togglegrid), grid)
                     started = False
                 
                 if event.key == pygame.K_5 and not started and not already:
                     started = True
                     pygame.display.set_caption("Visualiser: Bead Sort")
-                    run = bead(lambda : draw(WIN, grid, togglegrid), grid)
-                    already = True
+                    run, already = bead(lambda : draw(WIN, grid, togglegrid), grid)
                     started = False
                 
                 if event.key == pygame.K_6 and not started and not already:
                     started = True
                     pygame.display.set_caption("Visualiser: Bitonic Sort")
-                    run = bitonic(lambda : draw(WIN, grid, togglegrid), grid)
-                    already = True
+                    run, already = bitonic(lambda : draw(WIN, grid, togglegrid), grid)
+                    started = False
+                
+                if event.key == pygame.K_7 and not started and not already:
+                    started = True
+                    pygame.display.set_caption("Visualiser: Bogo Sort")
+                    run, already = bogo(lambda : draw(WIN, grid, togglegrid), grid)
                     started = False
 
                 if event.key == pygame.K_2 and not started and not already:
                     started = True
                     pygame.display.set_caption("Visualiser: Bubble Sort")
-                    run = bubble(lambda : draw(WIN, grid, togglegrid), grid)
-                    already = True
+                    run, already = bubble(lambda : draw(WIN, grid, togglegrid), grid)
+                    started = False
+                
+                if event.key == pygame.K_8 and not started and not already:
+                    started = True
+                    pygame.display.set_caption("Visualiser: Bucket Sort")
+                    run, already = bucket(lambda : draw(WIN, grid, togglegrid), grid)
+                    started = False
+
+                if event.key == pygame.K_9 and not started and not already:
+                    started = True
+                    pygame.display.set_caption("Visualiser: Cocktail Shaker Sort")
+                    run, already = cocktail(lambda : draw(WIN, grid, togglegrid), grid)
                     started = False
                 
                 if event.key == pygame.K_3 and not started and not already:
                     started = True
                     pygame.display.set_caption("Visualiser: Merge Sort(Iterative)")
-                    run = iterativemerge(lambda : draw(WIN, grid, togglegrid), grid)
-                    already = True
+                    run, already = iterativemerge(lambda : draw(WIN, grid, togglegrid), grid)
                     started = False
                 
-                if event.key == pygame.K_4 and not started and not already:
+                if event.key == pygame.K_4 and not started:
                     started = True
                     pygame.display.set_caption("Visualiser: Wiggle Sort")
                     run = wiggle(lambda : draw(WIN, grid, togglegrid), grid)
-                    # already = True
                     started = False
 
                 if event.key == pygame.K_SPACE:
@@ -130,7 +144,7 @@ def sortloop():
                     l = l[::-1]
                     for node in grid:
                         g = l.pop(0)
-                        node.evalu(g)
+                        node.evalu(g + 1)
                     pygame.display.set_caption("Visualiser: Inverted")
                     already = False
                 if event.key == pygame.K_TAB:

@@ -13,20 +13,20 @@ def selection(draw, grid):
             clk.tick(30)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                return False
+                return False, False
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
-                    return True
+                    return True, False
                 if event.key == pygame.K_BACKSPACE:
                     slow = not slow
         l = i
         for k in range(i + 1, length):
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
-                    return False
+                    return False, False
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_ESCAPE:
-                        return True
+                        return True, False
                     if event.key == pygame.K_BACKSPACE:
                         slow = not slow
             if grid[k].value < grid[l].value:
@@ -42,4 +42,4 @@ def selection(draw, grid):
             draw()
         i += 1
         
-    return True
+    return True, True

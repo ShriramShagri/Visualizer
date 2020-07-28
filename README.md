@@ -24,9 +24,12 @@ Maze:
 * [Recursive division algorithm](Algorithms/recursive_division.py)
 
 Sorting:
-* [Bead Sort](Sorts/bead.py)
+* [Bead / Gravity Sort](Sorts/bead.py)
 * [Bitonic Sort](Sorts/bitonic.py)
+* [Bolo Sort](Sorts/Bolo.py)
 * [Bubble Sort](Sorts/bubble.py)
+* [Bucket / Bin Sort](Sorts/bucket.py)
+* [Cocktail Shaker / Bidirectional Bubble / Ripple / Shuttle Sort](Sorts/bucket.py)
 * [Merge Sort](Sorts/iterativemerge.py) (Iterative method)
 * [Selection Sort](Sorts/selection.py)
 * [Wiggle Sort](Sorts/bubble.py)
@@ -106,7 +109,10 @@ python app.py
 |   Space	| Shuffle 	|
 |  5 	|  Bead Sort	|
 |  6 	|  Bitonic Sort	|
+|  7 	|  Bolo Sort	|
 | 2  	|   Bubble Sort	|
+| 8  	|   Bucket Sort	|
+| 9  	|   Cocktail Shaker Sort	|
 | 3  	|  Merge Sort (iterative)	|
 |  1 	|  Selection Sort	|
 |   4	|  	Wiggle Sort|

@@ -13,20 +13,20 @@ def bubble(draw, grid):
             clk.tick(30)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                return False
+                return False, False
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
-                    return True
+                    return True, False
                 if event.key == pygame.K_BACKSPACE:
                     slow = not slow
         swapped = False
         for j in range(length-1 - i):
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
-                    return False
+                    return False, False
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_ESCAPE:
-                        return True
+                        return True, False
                     if event.key == pygame.K_BACKSPACE:
                         slow = not slow
             if grid[j].value > grid[j+1].value:
@@ -41,4 +41,4 @@ def bubble(draw, grid):
         if not slow:
             draw()
         i += 1   
-    return True
+    return True, True

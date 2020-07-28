@@ -18,25 +18,25 @@ def bitonic(draw, grid):
             clk.tick(30)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                return False
+                return False, False
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
-                    return True
+                    return True, False
                 if event.key == pygame.K_BACKSPACE:
                     slow = not slow
         bitonic_sort(draw, grid,temp, 0, length, 1, slow)
         i += 1
         
-    return True
+    return True, True
 
 
 def compAndSwap(draw, grid, temp, i, j, dire, slow):
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            return False
+            exit()
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
-                return True
+                return True, False
             if event.key == pygame.K_BACKSPACE:
                 slow = not slow
     if (dire == 1 and temp[i] > temp[j]) or (dire == 0 and temp[i] < temp[j]):
@@ -51,10 +51,10 @@ def compAndSwap(draw, grid, temp, i, j, dire, slow):
 def bitonic_merge(draw, grid, temp, low, cnt, dire, slow):
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            return False
+            exit()
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
-                return True
+                return True, False
             if event.key == pygame.K_BACKSPACE:
                 slow = not slow
     if cnt > 1:
@@ -69,10 +69,10 @@ def bitonic_merge(draw, grid, temp, low, cnt, dire, slow):
 def bitonic_sort(draw, grid, temp, low, cnt, dire, slow):
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            return False
+            exit()
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
-                return True
+                return True, False
             if event.key == pygame.K_BACKSPACE:
                 slow = not slow
     if cnt > 1:

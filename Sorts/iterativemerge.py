@@ -18,26 +18,27 @@ def iterativemerge(draw, grid):
         #     clk.tick(30)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                return False
+                return False, False
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
-                    return True
+                    return True, False
                 if event.key == pygame.K_BACKSPACE:
                     slow = not slow
         
         for d in range(0, length, i):
-            if 100//i > 7:
-                clk.tick(100//i)
-            else:
-                clk.tick(10)
+            
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
-                    return False
+                    return False, False
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_ESCAPE:
-                        return True
+                        return True, False
                     if event.key == pygame.K_BACKSPACE:
                         slow = not slow
+            if 100//i > 15:
+                clk.tick(100//i)
+            else:
+                clk.tick(20)
             l = d
             h = d + i - 1
             m = (l + h + 1) // 2
@@ -55,12 +56,13 @@ def iterativemerge(draw, grid):
                 grid[node].value = temp[node]
         i *= 2
     draw()  
-    return True, grid
+    return True, False
 
 def merge1(draw, temp, l, m, h, grid, slow):
     result = []
     left, right = temp[l : m], temp[m : h + 1]
     while left and right:
+        pygame.event.pump()
         if left[0] <= right[0]:
             t = left.pop(0)
         else:

@@ -14,20 +14,20 @@ def bead(draw, grid):
             clk.tick(30)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                return False
+                return False, False
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
-                    return True
+                    return True, False
                 if event.key == pygame.K_BACKSPACE:
                     slow = not slow
         
         for a, (upper, lower) in enumerate(zip(temp, temp[1:])):
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
-                    return False
+                    return False, False
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_ESCAPE:
-                        return True
+                        return True, False
                     if event.key == pygame.K_BACKSPACE:
                         slow = not slow
             if upper > lower:
@@ -43,4 +43,4 @@ def bead(draw, grid):
             draw()
         i += 1
         
-    return True
+    return True, True
