@@ -38,6 +38,8 @@ Sorting:
 * [Heap Sort](Sorts/heap.py)
 * [Insertion Sort](Sorts/insertion.py)
 * [Merge Sort](Sorts/iterativemerge.py) (Iterative method)
+* [Merge Sort](Sorts/recursivemerge.py) (Recursive method)
+* [Odd Even / Brick Sort](Sorts/oddeven.py)
 * [Selection Sort](Sorts/selection.py)
 * [Wiggle Sort](Sorts/wiggle.py)
 
@@ -127,7 +129,10 @@ python app.py
 | q  	|   Gnome Sort	|
 | w  	|   Heap Sort	|
 | e  	|   Insertion Sort	|
-| g  	|  Merge Sort (iterative)	|
+| r  	|  Merge Insertion Sort (iterative)	|
+| t  	|  Merge Sort (Recursive)	|
+| y  	|  Merge Sort (iterative)	|
+| u  	|   Odd Even Sort	|
 |  h 	|  Selection Sort	|
 |   j	|  	Wiggle Sort|
 |   	|  	|

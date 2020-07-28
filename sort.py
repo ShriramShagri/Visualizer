@@ -14,7 +14,9 @@ from Sorts.double import double
 from Sorts.gnome import gnome
 from Sorts.heap import heap
 from Sorts.insertion import insertion
+from Sorts.merge import recursivemerge
 from Sorts.iterativemerge import iterativemerge
+from Sorts.oddeven import oddeven
 from Sorts.selection import selection
 from Sorts.wiggle import wiggle
 
@@ -161,10 +163,22 @@ def sortloop():
                     run, already = insertion(lambda : draw(WIN, grid, togglegrid), grid)
                     started = False
                 
-                if event.key == pygame.K_g and not started and not already:
+                if event.key == pygame.K_t and not started and not already:
                     started = True
                     pygame.display.set_caption("Visualiser: Merge Sort(Iterative)")
                     run, already = iterativemerge(lambda : draw(WIN, grid, togglegrid), grid)
+                    started = False
+                
+                # if event.key == pygame.K_y and not started and not already:
+                #     started = True
+                #     pygame.display.set_caption("Visualiser: Merge Sort(Recursive)")
+                #     run, already = recursivemerge(lambda : draw(WIN, grid, togglegrid), grid)
+                #     started = False
+                
+                if event.key == pygame.K_u and not started and not already:
+                    started = True
+                    pygame.display.set_caption("Visualiser: Odd Even Sort")
+                    run, already = oddeven(lambda : draw(WIN, grid, togglegrid), grid)
                     started = False
                 
                 if event.key == pygame.K_h and not started and not already:
