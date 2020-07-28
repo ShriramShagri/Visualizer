@@ -46,7 +46,7 @@ Sorting:
 1) [Radix Sort](Sorts/radix.py)
 1) [Shell Sort](Sorts/shell.py)
 1) [Selection Sort](Sorts/selection.py)
-1) [Sleep Sort](Sorts/sleepsort.py)
+1) [Sleep Sort](Sorts/sleep.py)
 1) [Wiggle Sort](Sorts/wiggle.py)
 
 ---
