@@ -26,13 +26,15 @@ Maze:
 Sorting:
 * [Bead / Gravity Sort](Sorts/bead.py)
 * [Bitonic Sort](Sorts/bitonic.py)
-* [Bolo Sort](Sorts/Bolo.py)
+* [Bogo / Stupid Sort](Sorts/Bogo.py)
 * [Bubble Sort](Sorts/bubble.py)
 * [Bucket / Bin Sort](Sorts/bucket.py)
 * [Cocktail Shaker / Bidirectional Bubble / Ripple / Shuttle Sort](Sorts/cocktail.py)
 * [Comb Sort](Sorts/comb.py)
 * [Counting Sort](Sorts/counting.py)
 * [Cycle Sort](Sorts/cycle.py)
+* [Double Sort](Sorts/double.py)
+* [Gnome / Dubbed Stupid Sort](Sorts/gnome.py)
 * [Merge Sort](Sorts/iterativemerge.py) (Iterative method)
 * [Selection Sort](Sorts/selection.py)
 * [Wiggle Sort](Sorts/wiggle.py)
@@ -119,6 +121,8 @@ python app.py
 | 7  	|   Comb Sort	|
 | 8  	|   Counting Sort	|
 | 9  	|   Cycle Sort	|
+| 0  	|   Double Sort	|
+| q  	|   Gnome Sort	|
 | g  	|  Merge Sort (iterative)	|
 |  h 	|  Selection Sort	|
 |   j	|  	Wiggle Sort|

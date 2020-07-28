@@ -11,6 +11,7 @@ from Sorts.comb import comb
 from Sorts.counting import counting
 from Sorts.cycle import cycle
 from Sorts.double import double
+from Sorts.gnome import gnome
 from Sorts.iterativemerge import iterativemerge
 from Sorts.selection import selection
 from Sorts.wiggle import wiggle
@@ -138,6 +139,12 @@ def sortloop():
                     started = True
                     pygame.display.set_caption("Visualiser: Double Sort")
                     run, already = double(lambda : draw(WIN, grid, togglegrid), grid)
+                    started = False
+
+                if event.key == pygame.K_q and not started and not already:
+                    started = True
+                    pygame.display.set_caption("Visualiser: Gnome Sort")
+                    run, already = gnome(lambda : draw(WIN, grid, togglegrid), grid)
                     started = False
                 
                 if event.key == pygame.K_g and not started and not already:
