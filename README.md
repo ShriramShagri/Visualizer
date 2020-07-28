@@ -113,6 +113,7 @@ python app.py
 | 2  	|   Bubble Sort	|
 | 8  	|   Bucket Sort	|
 | 9  	|   Cocktail Shaker Sort	|
+| 0  	|   Comb Sort	|
 | 3  	|  Merge Sort (iterative)	|
 |  1 	|  Selection Sort	|
 |   4	|  	Wiggle Sort|
