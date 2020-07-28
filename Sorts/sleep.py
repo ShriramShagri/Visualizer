@@ -20,6 +20,7 @@ def sleepsort(draw, grid):
         grid[ind].value = x
         grid[ind].make_red()
         draw()
+        
 
     mx = temp[0]
     for value in temp:
@@ -33,7 +34,7 @@ def sleepsort(draw, grid):
         if mx < value:
             mx = value
         Timer(value, append_to_result, [value, grid, draw]).start()
-    # sleep(mx+1)
+
     pygame.time.wait((mx + 1))
              
     return True, True
