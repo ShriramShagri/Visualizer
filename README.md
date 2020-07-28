@@ -43,6 +43,7 @@ Sorting:
 1) [Pancake Sort](Sorts/pancake.py)
 1) [Pigeonhole Sort](Sorts/pigeon.py)
 1) [Quick Sort](Sorts/quick.py)
+1) [Radix Sort](Sorts/radix.py)
 1) [Selection Sort](Sorts/selection.py)
 1) [Wiggle Sort](Sorts/wiggle.py)
 
@@ -139,6 +140,7 @@ python app.py
 |  i 	|  Pancake Sort	|
 |  o 	|  Pigeonhole Sort	|
 |  p 	|  Quick Sort	|
+|  a 	|  Radix Sort	|
 |  h 	|  Selection Sort	|
 |   j	|  	Wiggle Sort|
 |   	|  	|

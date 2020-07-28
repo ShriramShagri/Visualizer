@@ -37,6 +37,12 @@ class Line():
         self.no = val
         self.x = (val)*WIDTH
     
+    def move(self, val):
+        k = self.no+1
+        self.no = val-1
+        self.x = (val-1)*WIDTH
+        return k
+    
     def evalu(self, val):
         self.value = val
     

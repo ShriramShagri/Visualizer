@@ -20,6 +20,7 @@ from Sorts.oddeven import oddeven
 from Sorts.pancake import pancake
 from Sorts.pigeon import pigeon
 from Sorts.quick import quick
+from Sorts.radix import radix
 from Sorts.selection import selection
 from Sorts.wiggle import wiggle
 
@@ -201,6 +202,12 @@ def sortloop():
                 #     pygame.display.set_caption("Visualiser: Quick Sort")
                 #     run, already = quick(lambda : draw(WIN, grid, togglegrid), grid)
                 #     started = False
+
+                if event.key == pygame.K_a and not started and not already:
+                    started = True
+                    pygame.display.set_caption("Visualiser: Radix Sort")
+                    run, already = radix(lambda : draw(WIN, grid, togglegrid), grid)
+                    started = False
                 
                 if event.key == pygame.K_h and not started and not already:
                     started = True

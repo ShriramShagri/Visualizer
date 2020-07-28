@@ -1,42 +1,47 @@
 import pygame
 
 clk = pygame.time.Clock()
-t = []
+
 def quick(draw, grid):
     global t
     temp = [i.value for i in grid]
-    t = temp
+    t = grid
     run = True
     slow = True
 
-    qsort(draw, grid, slow)
+
+    qsort(draw, grid, t, slow)
         
     return True, True
 
-def qsort(draw, grid, slow):
+def qsort(draw, grid, temp, slow):
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             exit()
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_BACKSPACE:
                 slow = not slow
-    length = len(grid)
+    length = len(temp)
     if length <= 1:
-        return grid
+        return temp
     else:
-        # Use the last element as the first pivot
-        pivot = grid.pop()
-        # Put elements greater than pivot in greater list
-        # Put elements lesser than pivot in lesser list
+        
+        pivot = temp.pop()
+        
         greater, lesser = [], []
-        for element in grid:
+        for element in temp:
             if element.value > pivot.value:
                 greater.append(element)
             else:
                 lesser.append(element)
-        a = qsort(draw, lesser, slow) + [pivot] + qsort(draw, greater, slow)
+        a = qsort(draw, grid, lesser, slow) + [pivot] + qsort(draw, grid, greater, slow)
         for nodes in a:
             nodes.make_red()
+            n = nodes.move(nodes.value)
+            for node in grid:
+                if node.no == n:
+                    node.move(n)
+
             if slow:
                 draw()
         if not slow:
