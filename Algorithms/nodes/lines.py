@@ -3,14 +3,15 @@ import pygame
 RED = (255,0,0)
 GREEN = (0,255,0)
 BLACK = (0,0,0)
-WHITE = (255,255,255)
+WHITE = (128,128,128)
+
 
 W = 1584
 H = 784
 
-WIDTH = 1584/396
+WIDTH = 1584/512
 
-HEIGHT = 784/396
+HEIGHT = 784/512
 
 class Line():
     def __init__(self, x, no):

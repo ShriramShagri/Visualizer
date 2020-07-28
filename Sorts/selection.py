@@ -4,7 +4,7 @@ clk = pygame.time.Clock()
 
 def selection(draw, grid):
     run = True
-    slow = False
+    slow = True
 
     length = len(grid)
     i = 0
@@ -17,20 +17,28 @@ def selection(draw, grid):
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     return True
-                if event.key == pygame.K_EQUALS:
+                if event.key == pygame.K_BACKSPACE:
                     slow = not slow
         l = i
         for k in range(i + 1, length):
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    return False
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_ESCAPE:
+                        return True
+                    if event.key == pygame.K_BACKSPACE:
+                        slow = not slow
             if grid[k].value < grid[l].value:
                 l = k
             if slow:
                 grid[k].make_red()
-                grid[l].make_green()
+                grid[l].make_red()
                 draw()
         if l != i:
             grid[l].value, grid[i].value = grid[i].value, grid[l].value
-            grid[l].make_green()
-            grid[i].make_green()
+            grid[l].make_red()
+            grid[i].make_red()
             draw()
         i += 1
         
