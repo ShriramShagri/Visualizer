@@ -9,6 +9,7 @@ from Sorts.bucket import bucket
 from Sorts.cocktail import cocktail
 from Sorts.comb import comb
 from Sorts.counting import counting
+from Sorts.cycle import cycle
 from Sorts.iterativemerge import iterativemerge
 from Sorts.selection import selection
 from Sorts.wiggle import wiggle
@@ -130,6 +131,12 @@ def sortloop():
                     started = True
                     pygame.display.set_caption("Visualiser: Counting Sort")
                     run, already = counting(lambda : draw(WIN, grid, togglegrid), grid)
+                    started = False
+                
+                if event.key == pygame.K_w and not started and not already:
+                    started = True
+                    pygame.display.set_caption("Visualiser: Counting Sort")
+                    run, already = cycle(lambda : draw(WIN, grid, togglegrid), grid)
                     started = False
                 
                 if event.key == pygame.K_3 and not started and not already:

@@ -32,6 +32,7 @@ Sorting:
 * [Cocktail Shaker / Bidirectional Bubble / Ripple / Shuttle Sort](Sorts/cocktail.py)
 * [Comb Sort](Sorts/comb.py)
 * [Counting Sort](Sorts/counting.py)
+* [Cycle Sort](Sorts/cycle.py)
 * [Merge Sort](Sorts/iterativemerge.py) (Iterative method)
 * [Selection Sort](Sorts/selection.py)
 * [Wiggle Sort](Sorts/wiggle.py)
