@@ -29,10 +29,12 @@ Sorting:
 * [Bolo Sort](Sorts/Bolo.py)
 * [Bubble Sort](Sorts/bubble.py)
 * [Bucket / Bin Sort](Sorts/bucket.py)
-* [Cocktail Shaker / Bidirectional Bubble / Ripple / Shuttle Sort](Sorts/bucket.py)
+* [Cocktail Shaker / Bidirectional Bubble / Ripple / Shuttle Sort](Sorts/cocktail.py)
+* [Comb Sort](Sorts/comb.py)
+* [Counting Sort](Sorts/counting.py)
 * [Merge Sort](Sorts/iterativemerge.py) (Iterative method)
 * [Selection Sort](Sorts/selection.py)
-* [Wiggle Sort](Sorts/bubble.py)
+* [Wiggle Sort](Sorts/wiggle.py)
 
 ---
 #### To run the application:
@@ -114,6 +116,7 @@ python app.py
 | 8  	|   Bucket Sort	|
 | 9  	|   Cocktail Shaker Sort	|
 | 0  	|   Comb Sort	|
+| q  	|   Counting Sort	|
 | 3  	|  Merge Sort (iterative)	|
 |  1 	|  Selection Sort	|
 |   4	|  	Wiggle Sort|
