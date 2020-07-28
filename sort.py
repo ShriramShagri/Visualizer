@@ -12,6 +12,8 @@ from Sorts.counting import counting
 from Sorts.cycle import cycle
 from Sorts.double import double
 from Sorts.gnome import gnome
+from Sorts.heap import heap
+from Sorts.insertion import insertion
 from Sorts.iterativemerge import iterativemerge
 from Sorts.selection import selection
 from Sorts.wiggle import wiggle
@@ -145,6 +147,18 @@ def sortloop():
                     started = True
                     pygame.display.set_caption("Visualiser: Gnome Sort")
                     run, already = gnome(lambda : draw(WIN, grid, togglegrid), grid)
+                    started = False
+                
+                if event.key == pygame.K_w and not started and not already:
+                    started = True
+                    pygame.display.set_caption("Visualiser: Heap Sort")
+                    run, already = heap(lambda : draw(WIN, grid, togglegrid), grid)
+                    started = False
+                
+                if event.key == pygame.K_e and not started and not already:
+                    started = True
+                    pygame.display.set_caption("Visualiser: Insertion Sort")
+                    run, already = insertion(lambda : draw(WIN, grid, togglegrid), grid)
                     started = False
                 
                 if event.key == pygame.K_g and not started and not already:

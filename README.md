@@ -35,6 +35,8 @@ Sorting:
 * [Cycle Sort](Sorts/cycle.py)
 * [Double Sort](Sorts/double.py)
 * [Gnome / Dubbed Stupid Sort](Sorts/gnome.py)
+* [Heap Sort](Sorts/heap.py)
+* [Insertion Sort](Sorts/insertion.py)
 * [Merge Sort](Sorts/iterativemerge.py) (Iterative method)
 * [Selection Sort](Sorts/selection.py)
 * [Wiggle Sort](Sorts/wiggle.py)
@@ -123,6 +125,8 @@ python app.py
 | 9  	|   Cycle Sort	|
 | 0  	|   Double Sort	|
 | q  	|   Gnome Sort	|
+| w  	|   Heap Sort	|
+| e  	|   Insertion Sort	|
 | g  	|  Merge Sort (iterative)	|
 |  h 	|  Selection Sort	|
 |   j	|  	Wiggle Sort|
