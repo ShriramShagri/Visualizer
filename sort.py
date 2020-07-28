@@ -23,6 +23,7 @@ from Sorts.quick import quick
 from Sorts.radix import radix
 from Sorts.shell import shell
 from Sorts.selection import selection
+from Sorts.sleep import sleepsort
 from Sorts.wiggle import wiggle
 
 
@@ -210,18 +211,24 @@ def sortloop():
                     run, already = radix(lambda : draw(WIN, grid, togglegrid), grid)
                     started = False
                 
-                if event.key == pygame.K_s and not started and not already:
+                if event.key == pygame.K_d and not started and not already:
                     started = True
                     pygame.display.set_caption("Visualiser: Shell Sort")
                     run, already = shell(lambda : draw(WIN, grid, togglegrid), grid)
                     started = False
                 
-                if event.key == pygame.K_h and not started and not already:
+                if event.key == pygame.K_s and not started and not already:
                     started = True
                     pygame.display.set_caption("Visualiser: Selection Sort")
                     run, already = selection(lambda : draw(WIN, grid, togglegrid), grid)
                     started = False
                 
+                if event.key == pygame.K_f and not started and not already:
+                    started = True
+                    pygame.display.set_caption("Visualiser: Sleep Sort")
+                    run, already = sleepsort(lambda : draw(WIN, grid, togglegrid), grid)
+                    started = False
+
                 if event.key == pygame.K_j and not started:
                     started = True
                     pygame.display.set_caption("Visualiser: Wiggle Sort")

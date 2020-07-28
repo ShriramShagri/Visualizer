@@ -46,6 +46,7 @@ Sorting:
 1) [Radix Sort](Sorts/radix.py)
 1) [Shell Sort](Sorts/shell.py)
 1) [Selection Sort](Sorts/selection.py)
+1) [Sleep Sort](Sorts/selection.py)
 1) [Wiggle Sort](Sorts/wiggle.py)
 
 ---
@@ -142,8 +143,9 @@ python app.py
 |  o 	|  Pigeonhole Sort	|
 |  p 	|  Quick Sort	|
 |  a 	|  Radix Sort	|
-|  s 	|  Shell Sort	|
-|  h 	|  Selection Sort	|
+|  s 	|  Selection Sort	|
+|  d 	|  Shell Sort	|
+|  f 	|  Sleep Sort	|
 |   j	|  	Wiggle Sort|
 |   	|  	|
 
