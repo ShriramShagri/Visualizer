@@ -1,5 +1,7 @@
 import pygame
+import os
 from Algorithms.nodes.lines import Line
+from Algorithms.nodes.button import button
 
 from Sorts.bead import bead
 from Sorts.bitonic import bitonic
@@ -14,8 +16,7 @@ from Sorts.double import double
 from Sorts.gnome import gnome
 from Sorts.heap import heap
 from Sorts.insertion import insertion
-from Sorts.merge import recursivemerge
-from Sorts.iterativemerge import iterativemerge
+from Sorts.merge import iterativemerge
 from Sorts.oddeven import oddeven
 from Sorts.pancake import pancake
 from Sorts.pigeon import pigeon
@@ -33,7 +34,9 @@ from random import shuffle, randint, choice
 
 pygame.init()
 
-infoObject = pygame.display.Info()
+FILEPATH = os.getcwd()
+
+# infoObject = pygame.display.Info()
 
 WIDTH = 1584
 COLUMNS = 256
@@ -67,7 +70,7 @@ def draw(win, grid, t):
     pygame.display.update()
 
 def sortloop():
-    print((infoObject.current_w, infoObject.current_h))
+    # print((infoObject.current_w, infoObject.current_h))
     
     grid = make_lines()
     pygame.init()
@@ -91,6 +94,7 @@ def sortloop():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return True
+
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_1 and not started and not already:
                     started = True
@@ -170,17 +174,11 @@ def sortloop():
                     run, already = insertion(lambda : draw(WIN, grid, togglegrid), grid)
                     started = False
                 
-                if event.key == pygame.K_t and not started and not already:
+                if event.key == pygame.K_r and not started and not already:
                     started = True
-                    pygame.display.set_caption("Visualiser: Merge Sort(Iterative)")
+                    pygame.display.set_caption("Visualiser: Merge Sort")
                     run, already = iterativemerge(lambda : draw(WIN, grid, togglegrid), grid)
                     started = False
-                
-                # if event.key == pygame.K_y and not started and not already:
-                #     started = True
-                #     pygame.display.set_caption("Visualiser: Merge Sort(Recursive)")
-                #     run, already = recursivemerge(lambda : draw(WIN, grid, togglegrid), grid)
-                #     started = False
                 
                 if event.key == pygame.K_u and not started and not already:
                     started = True
@@ -188,55 +186,55 @@ def sortloop():
                     run, already = oddeven(lambda : draw(WIN, grid, togglegrid), grid)
                     started = False
 
-                if event.key == pygame.K_i and not started and not already:
+                if event.key == pygame.K_y and not started and not already:
                     started = True
                     pygame.display.set_caption("Visualiser: Pancake Sort")
                     run, already = pancake(lambda : draw(WIN, grid, togglegrid), grid)
                     started = False
 
-                if event.key == pygame.K_o and not started and not already:
+                if event.key == pygame.K_u and not started and not already:
                     started = True
                     pygame.display.set_caption("Visualiser: Pigeonhole Sort")
                     run, already = pigeon(lambda : draw(WIN, grid, togglegrid), grid)
                     started = False
                 
-                if event.key == pygame.K_p and not started and not already:
+                if event.key == pygame.K_i and not started and not already:
                     started = True
                     pygame.display.set_caption("Visualiser: Quick Sort")
                     run, already = quick(lambda : draw(WIN, grid, togglegrid), grid)
                     started = False
 
-                if event.key == pygame.K_a and not started and not already:
+                if event.key == pygame.K_o and not started and not already:
                     started = True
                     pygame.display.set_caption("Visualiser: Radix Sort")
                     run, already = radix(lambda : draw(WIN, grid, togglegrid), grid)
                     started = False
                 
-                if event.key == pygame.K_d and not started and not already:
+                if event.key == pygame.K_a and not started and not already:
                     started = True
                     pygame.display.set_caption("Visualiser: Shell Sort")
                     run, already = shell(lambda : draw(WIN, grid, togglegrid), grid)
                     started = False
                 
-                if event.key == pygame.K_s and not started and not already:
+                if event.key == pygame.K_p and not started and not already:
                     started = True
                     pygame.display.set_caption("Visualiser: Selection Sort")
                     run, already = selection(lambda : draw(WIN, grid, togglegrid), grid)
                     started = False
                 
-                if event.key == pygame.K_f and not started and not already:
+                if event.key == pygame.K_s and not started and not already:
                     started = True
                     pygame.display.set_caption("Visualiser: Sleep Sort")
                     run, already = sleepsort(lambda : draw(WIN, grid, togglegrid), grid)
                     started = False
                 
-                if event.key == pygame.K_g and not started and not already:
+                if event.key == pygame.K_d and not started and not already:
                     started = True
                     pygame.display.set_caption("Visualiser: Stooge Sort")
                     run, already = stooge(lambda : draw(WIN, grid, togglegrid), grid)
                     started = False
 
-                if event.key == pygame.K_j and not started:
+                if event.key == pygame.K_f and not started:
                     started = True
                     pygame.display.set_caption("Visualiser: Wiggle Sort")
                     run = wiggle(lambda : draw(WIN, grid, togglegrid), grid)
@@ -251,6 +249,7 @@ def sortloop():
                         l.remove(g)
                     pygame.display.set_caption("Visualiser: Shuffled")
                     already = False
+
                 if event.key == pygame.K_RSHIFT:
                     l = [i for i in range(1,COLUMNS+1)]
                     l = l[::-1]
@@ -259,6 +258,101 @@ def sortloop():
                         node.evalu(g + 1)
                     pygame.display.set_caption("Visualiser: Inverted")
                     already = False
+
+                if event.key == pygame.K_ESCAPE:
+                    pygame.display.set_caption("Visualiser: Main Page")
+                    return False
+
                 if event.key == pygame.K_TAB:
                     togglegrid = not togglegrid
-sortloop()
+                
+                if event.key == pygame.K_h:
+                    helppage()
+
+def invert(color):
+    a, b, c = color
+    return (abs(255 - a), abs(255 - b), abs(255 - c))
+
+
+def helppage(k=False):
+    pygame.init()
+    Quit = False
+    inv = False
+
+    background1 = pygame.image.load(os.path.join(FILEPATH, 'Fonts', 'Help1.png'))
+
+    nextpage = button((0, 0, 0), 1440, 350, 75, 100, FILEPATH, (0, 0, 0), text='>')
+    while not Quit:
+        if k:
+            return
+        for event in pygame.event.get():
+            pos = pygame.mouse.get_pos()
+            if event.type == pygame.QUIT:
+                exit()
+            
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    return
+            
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if event.button == 1:
+                    if nextpage.isOver(pos):
+                        k = helppage2()
+                        continue
+
+            if event.type == pygame.MOUSEMOTION:
+                if nextpage.isOver(pos):
+                    inv = True
+                else:
+                    inv = False
+        WIN.blit(background1, (0, 0))
+        fillhelp(inv, nextpage)
+    
+def helppage2():
+    pygame.init()
+    Quit = False
+    inv = False
+    inv1 = False
+
+    background2 = pygame.image.load(os.path.join(FILEPATH, 'Fonts', 'Help2.png'))
+   
+    prevpage = button((0, 0, 0), 1440, 350, 75, 100, FILEPATH, (0, 0, 0), text='<')
+    while not Quit:
+        for event in pygame.event.get():
+            pos = pygame.mouse.get_pos()
+            if event.type == pygame.QUIT:
+                exit()
+            
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    return False
+            
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if event.button == 1:
+                    if prevpage.isOver(pos):
+                        return True
+                        
+            if event.type == pygame.MOUSEMOTION:
+                if prevpage.isOver(pos):
+                    inv1 = True
+                else:
+                    inv1 = False
+        WIN.blit(background2, (0, 0))
+        fillhelp(inv1, prevpage)
+    
+def fillhelp(inv2, btn2):
+    color = WHITE
+
+    if inv2:
+        btn2.textcolor = invert(color)
+        btn2.color = color
+    else:
+        btn2.textcolor = color
+        btn2.color = invert(color)
+    btn2.draw(WIN, btn2.textcolor)  
+
+
+    pygame.display.update()
+
+if __name__ == "__main__":
+    sortloop()

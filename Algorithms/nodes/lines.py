@@ -3,7 +3,7 @@ import pygame
 RED = (255,0,0)
 GREEN = (0,255,0)
 BLACK = (0,0,0)
-WHITE = (128,128,128)
+# BLACK = (128,128,128)
 
 
 W = 1584
@@ -16,7 +16,7 @@ HEIGHT = 784/256
 class Line():
     def __init__(self, x, no):
         self.value = x
-        self.color = WHITE
+        self.color = BLACK
         self.flash = 0
         self.no = no
         self.x = (no)*WIDTH
@@ -30,7 +30,7 @@ class Line():
         self.flash = 1
     
     def reset(self):
-        self.color = WHITE
+        self.color = BLACK
         self.flash = 0
     
     def change(self, val):
@@ -53,5 +53,5 @@ class Line():
         if self.flash > 0:
             self.flash -= 1
         elif self.flash == 0:
-            self.color = WHITE
+            self.color = BLACK
         pygame.draw.rect(win, self.color, (self.x, H-HEIGHT*self.value, WIDTH, HEIGHT*self.value))

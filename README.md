@@ -1,16 +1,28 @@
 # Algorithm Visualiser
 
-A simple tool built step by step visualisation for path finding, maze creating and sorting algorithms 
+A simple tool built step by step visualisation for path finding, maze creating and sorting algorithms. 
 
-![Example](Fonts/Example.png "Example")
+Over 35 algorithms visualised step by step! 
 
-### Included algorithms:
+---
 
-Path Finding:
+> Maze and Path Finding
+
+![Example](Fonts/Example1.png "Maze and Path Finding")
+
+>Sorting
+
+![Example](Fonts/Example2.png "Sorting")
+
+---
+
+## Supported Algorithms:
+
+>Path Finding:
 1) [A* Path finding algorithm](Algorithms/astar.py)
 1) [Dijkstra algorithm](Algorithms/dijkstra.py)
 
-Maze:
+>Maze:
 1) [Prim's algorithm](Algorithms/prims.py)
 1) [Kruskal's algorithm](Algorithms/kruskal.py)
 1) [Sidewinder algorithm](Algorithms/sidewinder.py)
@@ -23,7 +35,7 @@ Maze:
 1) [Binary Tree algorithm](Algorithms/binary_tree.py)
 1) [Recursive division algorithm](Algorithms/recursive_division.py)
 
-Sorting:
+>Sorting:
 1) [Bead / Gravity Sort](Sorts/bead.py)
 1) [Bitonic Sort](Sorts/bitonic.py)
 1) [Bogo / Stupid Sort](Sorts/Bogo.py)
@@ -37,8 +49,7 @@ Sorting:
 1) [Gnome / Dubbed Stupid Sort](Sorts/gnome.py)
 1) [Heap Sort](Sorts/heap.py)
 1) [Insertion Sort](Sorts/insertion.py)
-1) [Merge Sort](Sorts/iterativemerge.py) (Iterative method)
-1) [Merge Sort](Sorts/recursivemerge.py) (Recursive method)
+1) [Merge Sort](Sorts/iterativemerge.py)
 1) [Odd Even / Brick Sort](Sorts/oddeven.py)
 1) [Pancake Sort](Sorts/pancake.py)
 1) [Pigeonhole Sort](Sorts/pigeon.py)
@@ -51,19 +62,11 @@ Sorting:
 1) [Wiggle Sort](Sorts/wiggle.py)
 
 ---
-#### To run the application:
+## To run the application:
 
 Install modules
 ```bash
 pip install pygame
-pip install argparse
-```
-
-Run command for more information:
-```bash
-python app.py -h
-or
-python app.py --help
 ```
 
 Run to get started right away!:
@@ -72,7 +75,7 @@ python app.py
 ```
 
 ---
-#### To use the tool:
+## To use the tool:
 > Different coloured squares represents the following:
 
 |  Color 	|   Representation	|  
@@ -89,33 +92,37 @@ python app.py
 
 |   Key	|   Function	|
 |---	|---	|
-| Backspace  	|  Clear Screen 	|
-|   Tab	|  Switch off or on grid 	|
-|   Mouse Right Click	|   Clear node or obstacle	|
-|   Mouse Left Click	|   Add Node or obstacle	|
+| Backspace  	|  Clear Screen (Maze)\Increase execution Speed (Both) 	|
+|   Tab	|  Switch off or on grid (Both) 	|
+|   Mouse Right Click	|   Clear node or obstacle (Maze)	|
+|   Mouse Left Click	|   Add Node or obstacle (Maze)	|
+|   Space	|  Shuffle (Sort)	|
+|   R_Shift	| Invert (Sort) 	|
+|   Escape	|  Return to previous page	|
+|   h	|  Help	|
 
 > Maze Generation:
 
 |   Key	|   Function	|
 |---	|---	|
-| p  	|   Prim's algorithm	|
-|  k 	|   Kruskal's algorithm	|
-|   s	|   Sidewinder algorithm	|
-|  r 	|   Recursive backtracking algorithm	|
-|  u 	|   Aldous Broder algorithm	|
-|  h 	|   Hunt and Kill algorithm	|
-|   g	|   Growing Tree algorithm	|
-|   b	|   Binary Tree algorithm	|
-|   q	|   Recursive Division algorithm	|
-|  w 	|  	 Wilson's algorithm|
-|  e 	|  	 Eller's algorithm|
+| 1  	|   Prim's algorithm	|
+|  2 	|   Kruskal's algorithm	|
+|  3	|   Sidewinder algorithm	|
+|  4 	|   Recursive backtracking algorithm	|
+|  5 	|   Aldous Broder algorithm	|
+|  6 	|   Hunt and Kill algorithm	|
+|   7	|   Growing Tree algorithm	|
+|   8	|   Binary Tree algorithm	|
+|   9	|   Recursive Division algorithm	|
+|  0	|  	 Wilson's algorithm|
+|  q 	|  	 Eller's algorithm|
 
 > Path Finding:
 
 |   Key	|   Function	|
 |---	|---	|
-| a  	|   A* algorithm	|
-| d  	|   Dijkstra algorithm	|
+| z  	|   A* algorithm	|
+| x  	|   Dijkstra algorithm	|
 |   	|  	|
 
 > Sorting:
@@ -136,20 +143,17 @@ python app.py
 | q  	|   Gnome Sort	|
 | w  	|   Heap Sort	|
 | e  	|   Insertion Sort	|
-| r  	|  Merge Insertion Sort (iterative)	|
-| t  	|  Merge Sort (Recursive)	|
-| y  	|  Merge Sort (iterative)	|
-| u  	|   Odd Even Sort	|
-|  i 	|  Pancake Sort	|
-|  o 	|  Pigeonhole Sort	|
-|  p 	|  Quick Sort	|
-|  a 	|  Radix Sort	|
-|  s 	|  Selection Sort	|
-|  d 	|  Shell Sort	|
-|  f 	|  Sleep Sort	|
-|  g 	|  Stooge Sort	|
-|   j	|  	Wiggle Sort|
-|   	|  	|
+| r  	|  Merge Sort	|
+| t  	|   Odd Even Sort	|
+|  y 	|  Pancake Sort	|
+|  u 	|  Pigeonhole Sort	|
+|  i 	|  Quick Sort	|
+|  o 	|  Radix Sort	|
+|  p 	|  Selection Sort	|
+|  a 	|  Shell Sort	|
+|  s 	|  Sleep Sort	|
+|  d 	|  Stooge Sort	|
+|   f	|  	Wiggle Sort|
 
 #### Note:
 1) Maze algorithms don't work if start and end nodes are mentioned already.

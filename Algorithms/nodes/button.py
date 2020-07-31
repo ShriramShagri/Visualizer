@@ -21,9 +21,9 @@ class button():
         pygame.draw.rect(win, self.color, (self.x,self.y,self.width,self.height),0)
         
         if self.text != '':
-            font = pygame.font.Font(os.path.join(self.filepath, 'Fonts', 'Milton Keynes.ttf'), self.size)
+            font = pygame.font.Font(os.path.join(self.filepath, 'Fonts', 'MaidenOrange.ttf'), self.size)
             text = font.render(self.text, 1, self.textcolor)
-            win.blit(text, (self.x + (self.width/2 - text.get_width()/2), self.y + (self.height/2 - text.get_height()/2)))
+            win.blit(text, (self.x + (self.width/2 - text.get_width()/2), self.y + (self.height/2 - text.get_height()/2)+10))
 
     def isOver(self, pos):
         #Pos is the mouse position or a tuple of (x,y) coordinates
