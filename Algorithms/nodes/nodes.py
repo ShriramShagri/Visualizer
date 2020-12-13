@@ -90,7 +90,7 @@ class Nodes:
         self.colour = GREEN
     
     def tracker(self):
-        self.colour = LIGHTRED
+        self.colour = YELLOW
         self.animator = 8
 
     def wil1(self):
@@ -127,7 +127,7 @@ class Nodes:
             pygame.draw.rect(win, LIGHTGREEN, (self.x, self.y, self.width, self.width))
             # self.aa_round_rect(win, LIGHTGREEN, (self.x, self.y, self.width, self.width), 30)
             noskip = False
-        if self.animator == 7 and (self.colour != WHITE or self.colour != LIGHTRED):
+        if self.animator == 7 and (self.colour != WHITE or self.colour != YELLOW):
             pygame.draw.rect(win, WHITE, (self.x, self.y, self.width, self.width))
             # self.aa_round_rect(win, WHITE, (self.x, self.y, self.width, self.width), 30)
         gap = self.width / self.animator
