@@ -4,7 +4,7 @@ A simple tool built step by step visualization for path finding, maze creating a
 
 Over 35 algorithms visualized step by step! 
 
-Watch the project video ![HERE!](https://www.youtube.com/watch?v=TU1FtI5hDPM)
+Watch the project video [HERE!](https://www.youtube.com/watch?v=TU1FtI5hDPM)
 
 ---
 
