@@ -19,6 +19,16 @@ LIGHTRED2 = (255, 130, 130)
 
 class Nodes:
     def __init__(self, row, col, width, total_rows, total_cols, mode):
+        """Graph node class for maze generation and path finding
+
+        Args:
+            row (int): Row number of the node
+            col (int): Column number of the node
+            width (int): Width of each cell(considering squares have height as same as width)
+            total_rows (int): Total rows in the screen
+            total_cols (int): Total columns in the screen
+            mode (int): Speed of visualization -> Fast 1/0 Slow
+        """        
         self.row = row
         self.col = col
         self.y = row * width
@@ -34,92 +44,172 @@ class Nodes:
         self.prevcolour = None
 
     def get_pos(self):
+        """Get position of the current node
+
+        Returns:
+            tuple: (row, column)
+        """        
         return self.row, self.col
 
     def is_closed(self):
+        """Check if the node has been visited(Path Finding)
+
+        Returns:
+            Bool: True if node is red false otherwise
+        """        
         return self.colour == RED
 
     def is_open(self):
+        """Check if the node has not been visited(Path Finding)
+
+        Returns:
+            Bool: True if node is white false otherwise
+        """        
         return self.colour == GREEN
 
     def is_barrier(self):
+        """Check if the node is a wall(Path Finding)
+
+        Returns:
+            Bool: True if node is black false otherwise
+        """ 
         return self.colour == BLACK
 
     def is_start(self):
+        """Check if the node is start node (Path Finding)
+
+        Returns:
+            Bool: True if node is orange false otherwise
+        """ 
         return self.colour == ORANGE
 
     def is_end(self):
+        """Check if the node is end node (Path Finding)
+
+        Returns:
+            Bool: True if node is Turquoise false otherwise
+        """ 
         return self.colour == TURQUOISE
 
     def reset(self):
+        """Reset Node
+        """        
         self.colour = WHITE
         self.animator = 7
 
     def make_closed(self):
+        """Mark node as visited
+        """        
         self.colour = RED
         self.animator = 7
 
     def make_open(self):
+        """Mark node as to be visited next
+        """        
         self.colour = GREEN
         self.animator = 7
 
     def make_barrier(self):
+        """Mark node as barrier
+        """        
         self.colour = BLACK
         self.animator = 7
     
     def barrier(self):
+        """Mark node as barrier without animation
+        """        
         self.colour = BLACK
 
     def make_start(self):
+        """Set node as start node for pathfinding
+        """        
         self.colour = ORANGE
         self.animator = 7
 
     def make_end(self):
+        """Set node as end node for pathfinding
+        """        
         self.colour = TURQUOISE
         self.animator = 7
 
     def make_path(self):
+        """Mark node as part of the path
+        """        
         self.colour = PURPLE
         self.animator = 7
     
     def remove_barrier(self):
+        """Remove barrier and make way
+        """        
         self.colour = WHITE
         self.animator = 8
         
     def leader(self):
+        """Mark node at current iteration in backtracking
+        """        
         self.colour = GREEN
     
     def tracker(self):
+        """Set yello color on nodes in stack in backtracking
+        """        
         self.colour = YELLOW
         self.animator = 8
 
     def wil1(self):
+        """Marker for node in current iteration in wilson's algo
+        """        
         self.colour = LIGHTGREEN2
         self.animator = 1
 
     def wil2(self):
+        """Marker for visited set in wilson's algo
+        """   
         self.colour = LIGHTRED2
         self.animator = 1
     
     def open_prev(self):
+        """Set previous color for flash animation
+        """        
         self.prevcolour = self.colour
         self.colour = LIGHTGREEN
     
     def if_open_prev(self):
+        """Check if flash is enabled
+
+        Returns:
+            Boolean: True if flash color else false
+        """        
         return self.colour == LIGHTGREEN
 
     def do_open_prev(self):
+        """set back original color after flash
+        """        
         if self.prevcolour:
             self.colour = self.prevcolour
             self.prevcolour = None
 
     def getwil1(self):
+        """Wilson algo exclusive
+
+        Returns:
+            bool: True if color is light green
+        """        
         return self.colour == LIGHTGREEN2
 
     def getwil2(self):
+        """Wilson algo exclusive
+
+        Returns:
+            bool: True if color is light red
+        """
         return self.colour == LIGHTRED2
 
     def draw(self, win):
+        """Draw nodes
+
+        Args:
+            win (pygame.Surface): Surface on which node is drawn
+        """        
         noskip = True
         if self.mode == 1 and (self.colour == RED or self.colour == GREEN):
             self.colour = WHITE
@@ -142,6 +232,11 @@ class Nodes:
             self.prevcolour = None
     
     def drawwil(self, win):
+        """Wilson exclusive draw function for drawing random path nodes
+
+        Args:
+            win (pygame.Surface): Surface on which node is drawn
+        """        
         noskip = True
         if self.mode == 1 and (self.colour == RED or self.colour == GREEN):
             self.colour = WHITE
@@ -165,12 +260,19 @@ class Nodes:
             self.prevcolour = None
     
     def invert(self):
+        """Invert colors black and white
+        """        
         if self.colour == BLACK:
             self.colour = WHITE
         elif self.colour == WHITE:
             self.colour = BLACK
 
     def update_neighbours(self, grid):
+        """Add neighbours to current node
+
+        Args:
+            grid (list of lists): All node objects on the screen in 2D list
+        """        
         self.neighbours = []
         if self.row < self.total_rows - 1 and not grid[self.row + 1][self.col].is_barrier(): # down
             self.neighbours.append(grid[self.row + 1][self.col])
@@ -185,6 +287,11 @@ class Nodes:
             self.neighbours.append(grid[self.row][self.col - 1])
 
     def neighbour_node(self, grid):
+        """Add neighbours to current node
+
+        Args:
+            grid (list of lists): All node objects on the screen in 2D list
+        """ 
         self.neighbournodes = []
         if self.row % 2 == 1 and self.col % 2 == 1:
             if self.row < self.total_rows - 1: # down
@@ -200,6 +307,8 @@ class Nodes:
                 self.neighbours.append(grid[self.row][self.col - 2])
 
     def __lt__(self, other):
+        """Magic function
+        """        
         return False
 
     
