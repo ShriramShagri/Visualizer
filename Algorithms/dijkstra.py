@@ -3,6 +3,9 @@ from queue import PriorityQueue
 
 def reconstruct(came, end, draw):
     while end in came:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                return False
         end = came[end]
         end.make_path()
         draw()
