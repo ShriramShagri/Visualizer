@@ -9,6 +9,15 @@ col = 49
 clk = pygame.time.Clock()
 
 def drawedge(draw, edge, grid, mode):
+    """Connect the nodes(By removing barrier)
+
+    Args:
+        draw (func): Draws on screen
+        edge (tuple): cordinates of the ends of the edge
+        grid (2D list): Nodes on the screen
+        mode (int): fast 1/0 slow
+    """    
+    # Get
     x1, y1, x2, y2, x, y = getcoordinate(edge)
     
     grid[x1*2][y1*2].remove_barrier()
@@ -20,6 +29,14 @@ def drawedge(draw, edge, grid, mode):
         draw()
 
 def flash(draw, node, grid, mode):
+    """draw the node on iteration 
+
+    Args:
+        draw (func): Draws on screen
+        node (tuple): cordinates of the node
+        grid (2D list): Nodes on the screen
+        mode (int): fast 1/0 slow
+    """    
     x1, y1 = node
     for rw in grid:
         for node in rw:
@@ -31,6 +48,11 @@ def flash(draw, node, grid, mode):
         draw()
 
 def getcoordinate(edge):
+    """Get coordinates of the edge node between two nodes
+
+    Args:
+        edge (tuple): tuple of tuplescontaining two nodes
+    """    
     a, b = edge
     x1, y1 = a
     x2, y2 = b
@@ -49,6 +71,14 @@ def getcoordinate(edge):
     return(x1, y1, x2, y2, x, y)
 
 def getnextnode(node):
+    """Get a random neighbouring node
+
+    Args:
+        node (tuple): x, y of the node
+
+    Returns:
+        tuple: a random neighbouring node
+    """    
     x, y = node
     neighbours = []
     if x < row:
@@ -63,6 +93,15 @@ def getnextnode(node):
     return choice(neighbours)
 
 def getrandom(node, visited):
+    """Get random neighbouring node which is not visited
+
+    Args:
+        node (tuple): x, y of the node
+        visited (list): list of tuples of visited node
+
+    Returns:
+        list: first index as neighbours and second index as the node
+    """    
     try:
         x, y = node
     except:
@@ -84,6 +123,14 @@ def getrandom(node, visited):
     return neighbours, node
 
 def checkprev(node):
+    """Check if node exists
+
+    Args:
+        node (tuple): x, y of tuple if node exists
+
+    Returns:
+        boolean: true if exists false otherise
+    """    
     try:
         x, y = node
         return True
