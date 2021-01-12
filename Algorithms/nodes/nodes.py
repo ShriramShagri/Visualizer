@@ -320,6 +320,7 @@ class Nodes:
         but this option is not yet supported in my version of pygame so do it ourselves.
 
         We use anti-aliased circles to make the corners smoother
+        Works for pygame 2.0.0+
         '''
         if rect.width < 2 * corner_radius or rect.height < 2 * corner_radius:
             raise ValueError(f"Both height (rect.height) and width (rect.width) must be > 2 * corner radius ({corner_radius})")
