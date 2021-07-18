@@ -1,33 +1,7 @@
 import pygame
 import os
-import sys
 
-from Algorithms.nodes.nodes import *
-from Algorithms.nodes.button import *
-from Algorithms.prims import prims
-from Algorithms.astar import astar
-from Algorithms.dijkstra import dijkstra
-from Algorithms.kruskal import kruskal
-from Algorithms.sidewinder import sidewinder
-from Algorithms.recursive_backtracking import backtrack
-from Algorithms.ellers import ellers
-from Algorithms.aldous_broder import aldous
-from Algorithms.wilson import wilson
-from Algorithms.hunt_and_kill import hunt
-from Algorithms.growing_tree import tree
-from Algorithms.binary_tree import binary
-from Algorithms.recursive_division import division
-
-FILEPATH = os.getcwd()
-
-WIDTH = 1584
-COLUMNS = 99
-
-HEIGHT = 784
-ROWS = 49
-
-GREY = (128,128,128)
-WHITE = (255,255,255)
+from Visualiser import *
 
 stage = 3
 rainbow = [(255, 0, 0), (255, 255, 0), (0, 255, 0), (0, 0, 255), (75, 0, 130), (150, 0, 255)]
@@ -38,7 +12,7 @@ MODE = 0
 
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Visualiser")
-pygame.display.set_icon(pygame.image.load(os.path.join(FILEPATH, 'Fonts', 'icon.png')))
+pygame.display.set_icon(pygame.image.load(ICON))
 
 def make_grid():
     grid = []
@@ -245,7 +219,7 @@ def helppage(k=False):
     Quit = False
     inv = False
 
-    background1 = pygame.image.load(os.path.join(FILEPATH, 'Fonts', 'Help1.png'))
+    background1 = pygame.image.load(HELP1)
 
     nextpage = button((0, 0, 0), 1440, 350, 75, 100, FILEPATH, (0, 0, 0), text='>')
     while not Quit:
@@ -281,7 +255,7 @@ def helppage2():
     inv1 = False
     page = 1
 
-    background2 = pygame.image.load(os.path.join(FILEPATH, 'Fonts', 'Help2.png'))
+    background2 = pygame.image.load(HELP2)
    
     prevpage = button((0, 0, 0), 1440, 350, 75, 100, FILEPATH, (0, 0, 0), text='<')
     while not Quit:
