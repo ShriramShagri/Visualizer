@@ -1,10 +1,8 @@
 import pygame
+
 from random import randint, shuffle, choice
 
-row = 24
-col = 49
-LIGHTGREEN = (55,205,55)
-LIGHTRED = (255, 130, 130)
+from ...constants import MAZE_ABSOLUTE_ROWS as row, MAZE_ABSOLUTE_COLUMNS as col, LIGHTGREEN, LIGHTRED
 
 d = ['n', 's', 'e', 'w']
 clk = pygame.time.Clock()
