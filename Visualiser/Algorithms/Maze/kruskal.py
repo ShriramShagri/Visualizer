@@ -1,9 +1,7 @@
 import pygame
 from random import randint, choice, shuffle
+from ...constants import MAZE_ABSOLUTE_ROWS as row, MAZE_ABSOLUTE_COLUMNS as col
 
-row = 24
-col = 49
-GREEN = (0,255,0)
 # clk = pygame.time.Clock()
 
 def findparent(v, parent):

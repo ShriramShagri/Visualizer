@@ -1,9 +1,7 @@
 import pygame
-from random import randint
 
-# clk = pygame.time.Clock()
-row = 24
-col = 49
+from random import randint
+from ...constants import MAZE_ABSOLUTE_ROWS, MAZE_ABSOLUTE_COLUMNS
 
 def rand():
     return randint(0,1)
@@ -24,7 +22,7 @@ def binary(draw, grid, mode):
             draw()
 
     i = 1
-    while run and i != row + 1:
+    while run and i != MAZE_ABSOLUTE_ROWS + 1:
         # clk.tick(30)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -37,7 +35,7 @@ def binary(draw, grid, mode):
                         mode = 1
                     else:
                         mode = 0
-        for j in range(col+ 1):
+        for j in range(MAZE_ABSOLUTE_COLUMNS+ 1):
             
             current = (i, j)
             if rand() == 1:
@@ -56,16 +54,16 @@ def binary(draw, grid, mode):
 
 def movewest(node):
     x, y = node
-    if y < col:
+    if y < MAZE_ABSOLUTE_COLUMNS:
         return True
     return False
     
-def drawedge(draw, grid, current, mode, direc):
+def drawedge(draw, grid, current, mode, direction):
     x, y = current
     grid[x*2][y*2].remove_barrier()
-    if direc == 'north':
+    if direction == 'north':
         grid[x*2-1][y*2].remove_barrier()
-    elif direc == 'west':
+    elif direction == 'west':
         grid[x*2][y*2+1].remove_barrier()
     if mode == 0:
         draw()

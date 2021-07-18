@@ -1,8 +1,7 @@
 import pygame
-from random import choice, shuffle, randint
 
-row = 24
-col = 49
+from random import choice, shuffle, randint
+from ...constants import MAZE_ABSOLUTE_ROWS as row, MAZE_ABSOLUTE_COLUMNS as col
 
 def getneighbour(node, visited):
     x, y = node

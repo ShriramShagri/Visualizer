@@ -1,11 +1,9 @@
 import pygame
+
 from random import randint, choice
+from ...constants import MAZE_ABSOLUTE_ROWS, MAZE_ABSOLUTE_COLUMNS
 
 extra_vis = False
-
-row = 24
-col = 49
-
 clk = pygame.time.Clock()
 
 def drawedge(draw, edge, grid, mode):
@@ -81,11 +79,11 @@ def getnextnode(node):
     """    
     x, y = node
     neighbours = []
-    if x < row:
+    if x < MAZE_ABSOLUTE_ROWS:
         neighbours.append((x+1, y))
     if x > 0:
         neighbours.append((x-1, y))
-    if y < col:
+    if y < MAZE_ABSOLUTE_COLUMNS:
         neighbours.append((x, y+1))
     if y > 0:
         neighbours.append((x, y-1))
@@ -107,13 +105,13 @@ def getrandom(node, visited):
     except:
         return []
     neighbours = []
-    if x < row:
+    if x < MAZE_ABSOLUTE_ROWS:
         if (x+1, y) not in visited:
             neighbours.append((x+1, y))
     if x > 0:
         if (x-1, y) not in visited:
             neighbours.append((x-1, y))
-    if y < col:
+    if y < MAZE_ABSOLUTE_COLUMNS:
         if (x, y+1) not in visited:
             neighbours.append((x, y+1))
     if y > 0:
@@ -144,8 +142,8 @@ def aldous(draw, grid, mode):
     c = len(grid[0])
     run = True
     global extra_vis
-    for row in grid:
-        for node in row:
+    for rows in grid:
+        for node in rows:
             node.reset()
             node.invert()
        

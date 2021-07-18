@@ -1,50 +1,12 @@
 import pygame
 import os
-from Algorithms.nodes.lines import Line
-from Algorithms.nodes.button import button
 
-from Sorts.bead import bead
-from Sorts.bitonic import bitonic
-from Sorts.bogo import bogo
-from Sorts.bubble import bubble
-from Sorts.bucket import bucket
-from Sorts.cocktail import cocktail
-from Sorts.comb import comb
-from Sorts.counting import counting
-from Sorts.cycle import cycle
-from Sorts.double import double
-from Sorts.gnome import gnome
-from Sorts.heap import heap
-from Sorts.insertion import insertion
-from Sorts.merge import iterativemerge
-from Sorts.oddeven import oddeven
-from Sorts.pancake import pancake
-from Sorts.pigeon import pigeon
-from Sorts.quick import quick
-from Sorts.radix import radix
-from Sorts.shell import shell
-from Sorts.selection import selection
-from Sorts.sleep import sleepsort
-from Sorts.stooge import stooge
-from Sorts.wiggle import wiggle
-
-
+from Visualiser import *
 from random import shuffle, randint, choice
-
 
 pygame.init()
 
-FILEPATH = os.getcwd()
-
 # infoObject = pygame.display.Info()
-
-WIDTH = 1584
-COLUMNS = 256
-
-HEIGHT = 784
-
-WHITE = (255,255,255)
-BLACK = (0,0,0)
 
 WIN = pygame.display.set_mode((1584, 784))
 pygame.display.set_caption("Visualiser: Edit")

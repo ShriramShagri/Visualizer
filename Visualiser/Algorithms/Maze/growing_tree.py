@@ -1,12 +1,10 @@
 import pygame
-from random import randint, choice
 
-# clk = pygame.time.Clock()
-row = 24
-col = 49
+from random import randint, choice
+from ...constants import MAZE_ABSOLUTE_ROWS as row, MAZE_ABSOLUTE_COLUMNS as col
+
 
 def noneb(stack, visited):
-    # x, y = node
     neighbours = []
     for node in stack:
         count = 0

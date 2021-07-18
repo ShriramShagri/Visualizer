@@ -1,17 +1,6 @@
 import pygame
 
-RED = (255,0,0)
-GREEN = (0,255,0)
-BLACK = (0,0,0)
-# BLACK = (128,128,128)
-
-
-W = 1584
-H = 784
-
-WIDTH = 1584/256
-
-HEIGHT = 784/256
+from ..constants import *
 
 class Line():
     def __init__(self, x, no):
@@ -25,7 +14,7 @@ class Line():
         self.color = BLACK
         self.flash = 0
         self.no = no
-        self.x = (no)*WIDTH
+        self.x = (no)*LINE_WIDTH
     
     def make_red(self):
         """Change line color to red
@@ -52,12 +41,12 @@ class Line():
             val (int): Position Value
         """        
         self.no = val
-        self.x = (val)*WIDTH
+        self.x = (val)*LINE_WIDTH
     
     def move(self, val):
         k = self.no+1
         self.no = val-1
-        self.x = (val-1)*WIDTH
+        self.x = (val-1)*LINE_WIDTH
         return k
     
     def evalu(self, val):
@@ -86,4 +75,4 @@ class Line():
             self.flash -= 1
         elif self.flash == 0:
             self.color = BLACK
-        pygame.draw.rect(win, self.color, (self.x, H-HEIGHT*self.value, WIDTH, HEIGHT*self.value))
+        pygame.draw.rect(win, self.color, (self.x, HEIGHT-LINE_HEIGHT*self.value, WIDTH, LINE_HEIGHT*self.value))

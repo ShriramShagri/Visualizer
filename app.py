@@ -2,7 +2,7 @@ import pygame
 import os
 
 import sort
-from Algorithms.nodes.button import *
+from Visualiser import button
 import Visualiser
 
 os.environ['SDL_VIDEO_CENTERED'] = '1'

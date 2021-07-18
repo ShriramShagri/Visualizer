@@ -1,10 +1,9 @@
 import pygame
+
 from random import randint, choice
+from ...constants import MAZE_ABSOLUTE_ROWS, MAZE_ABSOLUTE_COLUMNS
 
 clk = pygame.time.Clock()
-row = 24
-col = 49
-
 
 def getboolean():
     if randint(0, 1) == 0:
@@ -111,15 +110,15 @@ def ellers(draw, grid, mode):
 
     s = 1
     celllist = []
-    for b in range(row+1):
+    for b in range(MAZE_ABSOLUTE_ROWS+1):
         celllist.append([])
-        for j in range(col+1):
+        for j in range(MAZE_ABSOLUTE_COLUMNS+1):
             celllist[b].append(Cell(b, j, s))
             s += 1  
     
     i = 0
     currrow = celllist[i]
-    while i < row:
+    while i < MAZE_ABSOLUTE_ROWS:
         clk.tick(30)
         # i += 1
         for event in pygame.event.get():

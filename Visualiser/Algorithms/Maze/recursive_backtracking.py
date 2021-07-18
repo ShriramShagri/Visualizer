@@ -1,8 +1,9 @@
 import pygame
+
 from random import randint, choice
 
-row = 24
-col = 49
+from ...constants import MAZE_ABSOLUTE_ROWS as row, MAZE_ABSOLUTE_COLUMNS as col
+
 clk = pygame.time.Clock()
 
 def update(node, visited):

@@ -1,8 +1,8 @@
 import pygame
-from random import shuffle, randint, choice
 
-row = 24
-col = 49
+from random import shuffle, randint, choice
+from ...constants import MAZE_ABSOLUTE_ROWS as row, MAZE_ABSOLUTE_COLUMNS as col
+
 
 def rand():
     return randint(0,1)
